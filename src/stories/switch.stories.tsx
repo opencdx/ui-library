@@ -8,7 +8,7 @@ import {useForm} from "react-hook-form";
 
 
 
-import {Switch, SwitchProps, SwitchThumbIconProps} from "@/components/ui/Switch";
+import {Switch, SwitchProps, SwitchThumbIconProps} from "@/Switch";
 
 export default {
   title: "Components/Switch",

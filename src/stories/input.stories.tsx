@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/shared-icons";
 import {button} from "@nextui-org/theme";
 
-import {Input, InputProps, useInput} from "@/components/ui/Input";
+import {Input, InputProps, useInput} from "@/Input";
 
 export default {
   title: "Components/Input",

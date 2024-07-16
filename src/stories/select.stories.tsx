@@ -14,7 +14,7 @@ import {
   User,
 } from "@nextui-org/stories-utils";
 
-import {Select, SelectedItems, SelectItem, SelectProps, SelectSection} from "@/components/ui/Select";
+import {Select, SelectedItems, SelectItem, SelectProps, SelectSection} from "@/Select";
 
 export default {
   title: "Components/Select",

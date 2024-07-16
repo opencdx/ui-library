@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, ButtonProps } from '@/components/ui/Button';
+import { Button, ButtonProps } from '@/Button';
 import { Camera, HeadphonesIcon, Notification } from '@nextui-org/shared-icons';
 import { button } from '@nextui-org/theme';
 import { Meta } from '@storybook/react';
@@ -101,7 +101,7 @@ export const WithSquareCorners = {
     ...defaultProps,
     radius: 'none',
     children: 'Spreadsheet View',
-    variant: 'bordered',
+    variant: "solid",
     color: 'primary',
   },
 };
