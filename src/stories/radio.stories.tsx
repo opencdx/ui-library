@@ -6,7 +6,7 @@ import {
   RadioGroupProps,
   RadioProps,
   useRadio,
-} from '@/Radio';
+} from '@/radio';
 
 import { clsx } from '@nextui-org/shared-utils';
 import { button, radio } from '@nextui-org/theme';
