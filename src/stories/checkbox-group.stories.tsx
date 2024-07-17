@@ -6,7 +6,7 @@ import {Meta} from "@storybook/react";
 import {checkbox} from "@nextui-org/theme";
 import {button} from "@nextui-org/theme";
 
-import {CheckboxGroup, Checkbox, CheckboxGroupProps} from '@/checkbox';
+import {CheckboxGroup, Checkbox, CheckboxGroupProps} from '@/index';
 
 export default {
   title: "Components/CheckboxGroup",

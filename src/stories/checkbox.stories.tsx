@@ -4,7 +4,7 @@ import {
   Checkbox,
   CheckboxIconProps,
   CheckboxProps,
-} from '@/checkbox';
+} from '@/index';
 import { CloseIcon } from '@nextui-org/shared-icons';
 import { button, checkbox } from '@nextui-org/theme';
 import { Meta } from '@storybook/react';

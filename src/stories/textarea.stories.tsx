@@ -6,7 +6,7 @@ import {input} from "@nextui-org/theme";
 import {SendFilledIcon, PlusFilledIcon} from "@nextui-org/shared-icons";
 import {button} from "@nextui-org/theme";
 
-import {Textarea, TextAreaProps} from "@/input";
+import {Textarea, TextAreaProps} from "@/index";
 
 export default {
   title: "Components/Textarea",
