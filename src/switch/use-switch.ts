@@ -125,7 +125,6 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
       isDisabled: !!originalProps.isDisabled,
       isReadOnly: isReadOnlyProp,
       "aria-label": ariaLabel,
-     // "aria-labelledby": otherProps["aria-labelledby"] || labelId,
       onChange: onValueChange,
     };
   }, [
@@ -139,7 +138,6 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
     defaultSelected,
     originalProps.isDisabled,
     otherProps["aria-label"],
-   // otherProps["aria-labelledby"],
     onValueChange,
   ]);
 
@@ -219,7 +217,6 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
     (props = {}) => {
       return {
         ...props,
-        //"aria-hidden": true,
         className: clsx(slots.wrapper({class: clsx(classNames?.wrapper, props?.className)})),
       };
     },

@@ -153,8 +153,6 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
       isSelected: isSelectedProp,
       isDisabled: isDisabledProp,
       isReadOnly: isReadOnlyProp,
-      // "aria-label": safeAriaLabel(otherProps["aria-label"], children),
-      // "aria-labelledby": otherProps["aria-labelledby"] || labelId,
       onChange: onValueChange,
     };
   }, [
@@ -170,8 +168,6 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isSelectedProp,
     defaultSelected,
     validationBehavior,
-    // otherProps["aria-label"],
-    // otherProps["aria-labelledby"],
     onValueChange,
   ]);
 

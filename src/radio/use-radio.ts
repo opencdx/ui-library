@@ -93,16 +93,12 @@ export function useRadio(props: UseRadioProps) {
   const isInvalid = groupContext.isInvalid;
 
   const ariaRadioProps = useMemo(() => {
-    // const ariaDescribedBy =
-    //   [otherProps["aria-describedby"], descriptionId].filter(Boolean).join(" ") || undefined;
 
     return {
       id,
       isRequired,
       isDisabled: isDisabledProp,
       "aria-label": otherProps["aria-label"],
-      "aria-labelledby": otherProps["aria-labelledby"] || labelId,
-      //"aria-describedby": ariaDescribedBy,
     };
   }, [
     id,
@@ -110,8 +106,6 @@ export function useRadio(props: UseRadioProps) {
     isRequired,
     description,
     otherProps["aria-label"],
-    otherProps["aria-labelledby"],
-    //otherProps["aria-describedby"],
     descriptionId,
   ]);
 
@@ -213,7 +207,6 @@ export function useRadio(props: UseRadioProps) {
     (props = {}) => {
       return {
         ...props,
-        //"aria-hidden": true,
         className: clsx(slots.wrapper({class: clsx(classNames?.wrapper, props.className)})),
       };
     },
