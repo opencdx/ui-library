@@ -16,7 +16,7 @@ import {Avatar} from "@nextui-org/avatar";
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 
-import {Accordion, AccordionProps, AccordionItem, AccordionItemProps} from "@/accordion";
+import {Accordion, AccordionProps, AccordionItem, AccordionItemProps} from "@/index";
 
 export default {
   title: "Components/Accordion",
