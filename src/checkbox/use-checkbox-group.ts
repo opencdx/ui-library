@@ -13,7 +13,7 @@ import {CheckboxGroupState, useCheckboxGroupState} from "@react-stately/checkbox
 import {filterDOMProps, useDOMRef} from "@nextui-org/react-utils";
 import {clsx, safeAriaLabel} from "@nextui-org/shared-utils";
 
-import {CheckboxProps} from "./index";
+import {CheckboxProps} from "@/index";
 
 interface Props extends HTMLNextUIProps<"div"> {
   
