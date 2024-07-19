@@ -180,11 +180,11 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
       validationBehavior,
       autoCapitalize: originalProps.autoCapitalize as AutoCapitalize,
       value: inputValue,
-      "aria-label": safeAriaLabel(
-        originalProps["aria-label"],
-        originalProps.label,
-        originalProps.placeholder,
-      ),
+      // "aria-label": safeAriaLabel(
+      //   originalProps["aria-label"],
+      //   originalProps.label,
+      //   originalProps.placeholder,
+      // ),
       inputElementType: isMultiline ? "textarea" : "input",
       onChange: setInputValue,
     },
