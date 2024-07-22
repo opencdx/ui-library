@@ -1,3 +1,20 @@
 node_modules
 
 *storybook.log
+*.log
+.DS_Store
+*.iml
+node_modules
+.idea
+yarn-error.log
+yarn.lock
+package-lock.json
+.storybook
+
+# Next.js build output
+.next/
+out/
+
+# VSCode
+.vscode/
+
