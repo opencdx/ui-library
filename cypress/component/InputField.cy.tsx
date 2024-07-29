@@ -17,8 +17,8 @@ describe('InputField.cy.tsx', () => {
   })
 
   it('should have the correct default value', () => {
-    mount(<Input value="nter text here" />);
-    cy.get('input').should('have.value', 'nter text here');
+    mount(<Input value="Enter text here" />);
+    cy.get('input').should('have.value', 'Enter text here');
   })
 
   it('should clear the input field', () => {
@@ -53,8 +53,8 @@ describe('InputField.cy.tsx', () => {
 
   it('should handle focus and blur events', () => {
     mount(<Input />);
-    cy.get('input').focus().should('be.focused');
-    cy.get('input').blur().should('not.be.focused');
+    cy.get('input').focus().should('have.class', 'be.focused');
+    cy.get('input').blur().should('have.class', 'not.be.focused');
   })
 
   it('should render with the proper startContent', () => {
