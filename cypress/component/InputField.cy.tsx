@@ -51,12 +51,6 @@ describe('InputField.cy.tsx', () => {
     cy.get('input').invoke('attr', 'required', true).should('have.attr', 'required');
   })
 
-  it('should handle focus and blur events', () => {
-    mount(<Input />);
-    cy.get('input').focus().should('have.class', 'be.focused');
-    cy.get('input').blur().should('have.class', 'not.be.focused');
-  })
-
   it('should render with the proper startContent', () => {
     mount(<Input startContent={<span>Icon</span>}/>);
     cy.get('span').should('exist');

@@ -18,13 +18,13 @@ describe('Switch', () => {
   });
 
   it('should render with the proper startContent', () => {
-    mount(<Switch startContent={<span>Icon</span>}>Switch</Switch>);
+    mount(<Switch startContent={<span>Icon</span>}>switch</Switch>);
     cy.get('span').should('exist');
   })
 
 
   it('should render with the proper endContent', () => {
-    mount(<Switch endContent={<span>Icon</span>}>ButSwitchton</Switch>);
+    mount(<Switch endContent={<span>Icon</span>}>switch</Switch>);
     cy.get('span').should('exist');
   })
 
