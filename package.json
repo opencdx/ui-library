@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && tsc -p tsconfig.json",
+    "cy:report:component": "cypress run --component --headless",
     "cy:open": "cypress open",
     "cy:report": "cypress run --reporter mochawesome",
     "test": "echo \"Error: no test specified\" && exit 1",
