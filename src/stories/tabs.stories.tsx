@@ -2,7 +2,6 @@
 import React from "react";
 import {Meta} from "@storybook/react";
 import {button, link, tabs} from "@nextui-org/theme";
-import Lorem from "react-lorem-component";
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import {Card, CardBody} from "@nextui-org/card";
@@ -65,19 +64,19 @@ const defaultProps = {
 const StaticTemplate = (args: TabsProps) => (
   <Tabs aria-label="Tabs example" {...args}>
     <Tab key="world" title="World">
-      <Lorem count={1} sentenceUpperBound={20} />
+      <p>The world is the totality of entities, the whole of reality, or everything that exists. The nature of the world has been conceptualized differently in different fields.</p>
     </Tab>
     <Tab key="ny" title="N.Y">
-      <Lorem count={1} sentenceUpperBound={30} />
+      <p>NY is an abbreviation for New York, either the US state of New York or New York City. New York is a state in the northeastern United States and one of the original 13 colonies. Its capital is Albany and its largest city is New York City, which is also the most populated city in the country.</p>
     </Tab>
     <Tab key="business" title="Business">
-      <Lorem count={1} sentenceUpperBound={10} />
+      <p>Business is the practice of making one's living or making money by producing or buying and selling products. It is also "any activity or enterprise entered into for profit." A business entity is not necessarily separate from the owner and the creditors can hold the owner liable for debts the business has acquired.</p>
     </Tab>
     <Tab key="arts" title="Arts">
-      <Lorem count={1} sentenceUpperBound={50} />
+      <p>The arts are a group of activities that people create using their imagination, creativity, and skill across cultures and history. These activities can include painting, sculpture, music, literature, and theater. Art can also be a visual object or experience that is created through the expression of skill or imagination.</p>
     </Tab>
     <Tab key="science" title="Science">
-      <Lorem count={1} sentenceUpperBound={24} />
+      <p>Science is the pursuit and application of knowledge and understanding of the natural and social world following a systematic methodology based on evidence.</p>
     </Tab>
   </Tabs>
 );
@@ -115,19 +114,19 @@ const ControlledTemplate = (args: TabsProps) => {
         onSelectionChange={setSelected}
       >
         <Tab key="world" title="World">
-          <Lorem count={1} sentenceUpperBound={20} />
+          <p>The world is the totality of entities, the whole of reality, or everything that exists. The nature of the world has been conceptualized differently in different fields.</p>
         </Tab>
         <Tab key="ny" title="N.Y">
-          <Lorem count={1} sentenceUpperBound={30} />
+          <p>NY is an abbreviation for New York, either the US state of New York or New York City. New York is a state in the northeastern United States and one of the original 13 colonies. Its capital is Albany and its largest city is New York City, which is also the most populated city in the country.</p>
         </Tab>
         <Tab key="business" title="Business">
-          <Lorem count={1} sentenceUpperBound={10} />
+          <p>Business is the practice of making one's living or making money by producing or buying and selling products. It is also "any activity or enterprise entered into for profit." A business entity is not necessarily separate from the owner and the creditors can hold the owner liable for debts the business has acquired.</p>
         </Tab>
         <Tab key="arts" title="Arts">
-          <Lorem count={1} sentenceUpperBound={50} />
+          <p>The arts are a group of activities that people create using their imagination, creativity, and skill across cultures and history. These activities can include painting, sculpture, music, literature, and theater. Art can also be a visual object or experience that is created through the expression of skill or imagination.</p>
         </Tab>
         <Tab key="science" title="Science">
-          <Lorem count={1} sentenceUpperBound={24} />
+          <p>Science is the pursuit and application of knowledge and understanding of the natural and social world following a systematic methodology based on evidence.</p>
         </Tab>
       </Tabs>
 
@@ -162,31 +161,30 @@ const DynamicTemplate = (args: TabsProps<Item>) => {
     {
       id: "world",
       label: "World",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      content: "The world is the totality of entities, the whole of reality, or everything that exists. The nature of the world has been conceptualized differently in different fields.",
     },
     {
       id: "ny",
       label: "N.Y.",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non diam id libero rutrum aliquam. Sed eget nunc vitae nisl aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet. Sed eget nunc vitae nisl aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet. Sed eget nunc vitae nisl aliquam aliquet. ",
+      content: "NY is an abbreviation for New York, either the US state of New York or New York City. New York is a state in the northeastern United States and one of the original 13 colonies. Its capital is Albany and its largest city is New York City, which is also the most populated city in the country.",
     },
     {
       id: "business",
       label: "Business",
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non diam id libero rutrum aliquam. Sed eget nunc vitae nisl aliquam aliquet.",
+        "Business is the practice of making one's living or making money by producing or buying and selling products. It is also any activity or enterprise entered into for profit. A business entity is not necessarily separate from the owner and the creditors can hold the owner liable for debts the business has acquired.",
     },
     {
       id: "arts",
       label: "Arts",
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non diam id libero rutrum aliquam. Sed eget nunc vitae nisl aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet. Sed eget nunc vitae nisl aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet. Sed eget nunc vitae nisl aliquam aliquet. ",
+        "The arts are a group of activities that people create using their imagination, creativity, and skill across cultures and history. These activities can include painting, sculpture, music, literature, and theater. Art can also be a visual object or experience that is created through the expression of skill or imagination.",
     },
     {
       id: "science",
       label: "Science",
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non diam id libero rutrum aliquam. Sed eget nunc vitae nisl aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet. Sed eget nunc vitae nisl aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet. Sed eget nunc vitae nisl aliquam aliquet. ",
+        "Science is the pursuit and application of knowledge and understanding of the natural and social world following a systematic methodology based on evidence.",
     },
   ];
 

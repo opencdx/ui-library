@@ -8,7 +8,6 @@ import {Input} from "@nextui-org/input";
 import {Checkbox} from "@nextui-org/checkbox";
 import {Link} from "@nextui-org/link";
 import {MailFilledIcon, LockFilledIcon} from "@nextui-org/shared-icons";
-import Lorem from "react-lorem-component";
 
 import {
   Modal,
@@ -151,7 +150,30 @@ const InsideScrollTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={10} />
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
@@ -172,7 +194,22 @@ const OutsideScrollTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={10} />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
@@ -192,7 +229,7 @@ const OpenChangeTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={5} />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
