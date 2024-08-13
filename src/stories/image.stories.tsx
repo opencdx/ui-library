@@ -52,7 +52,6 @@ export default {
 
 const defaultProps = {
   ...image.defaultVariants,
-  src: "./images/local-image-1.jpeg",
   alt: "NextUI hero image",
   disableSkeleton: true,
 };
@@ -79,6 +78,7 @@ export const Default = {
   args: {
     width: 300,
     ...defaultProps,
+    src: "https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     shadow: "none"
   },
 };
@@ -86,11 +86,9 @@ export const Default = {
 export const Blurred = {
   args: {
     ...defaultProps,
+    src: "https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     width: 300,
     isBlurred: true,
-    src: "/images/local-image-small.jpg",
-    // src:
-    //   "https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
   },
 };
 
@@ -107,11 +105,11 @@ export const Zoomed = {
 export const Shadow = {
   args: {
     ...defaultProps,
+    src: "https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     width: 300,
     isZoomed: true,
     radius: "lg",
     shadow: "md",
-    src: "/images/local-image-small.jpg",
   },
 };
 

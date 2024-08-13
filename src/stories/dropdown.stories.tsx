@@ -608,15 +608,6 @@ export const Dynamic = {
   },
 };
 
-export const WithArrow = {
-  render: Template,
-
-  args: {
-    ...defaultProps,
-    showArrow: true,
-  },
-};
-
 export const WithDivider = {
   render: DividerTemplate,
 

@@ -693,44 +693,6 @@ const CustomStylesWithCustomItemsTemplate = ({color, ...args}: AutocompleteProps
   );
 };
 
-const WithReactHookFormTemplate = (args: AutocompleteProps) => {
-  const {
-    register,
-    formState: {errors},
-    handleSubmit,
-  } = useForm({
-    defaultValues: {
-      withDefaultValue: "cat",
-      withoutDefaultValue: "",
-      requiredField: "",
-    },
-  });
-
-  const onSubmit = (data: any) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-    alert("Submitted value: " + JSON.stringify(data));
-  };
-
-  return (
-    <form className="flex w-full max-w-xs flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-      <Autocomplete {...args} {...register("withDefaultValue")}>
-        {items}
-      </Autocomplete>
-      <Autocomplete {...args} {...register("withoutDefaultValue")}>
-        {items}
-      </Autocomplete>
-      <Autocomplete {...args} {...register("requiredField", {required: true})}>
-        {items}
-      </Autocomplete>
-
-      {errors.requiredField && <span className="text-danger">This field is required</span>}
-      <button className={button({class: "w-fit"})} type="submit">
-        Submit
-      </button>
-    </form>
-  );
-};
 
 export const Default = {
   render: Template,
@@ -789,14 +751,6 @@ export const LabelPlacement = {
 
 export const AsyncFiltering = {
   render: AsyncFilteringTemplate,
-
-  args: {
-    ...defaultProps,
-  },
-};
-
-export const AsyncLoading = {
-  render: AsyncLoadingTemplate,
 
   args: {
     ...defaultProps,
@@ -877,36 +831,6 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
-  render: FormTemplate,
-
-  args: {
-    ...defaultProps,
-    isRequired: true,
-    errorMessage: (value: ValidationResult) => {
-      if (value.validationDetails.valueMissing) {
-        return "Value is required";
-      }
-    },
-  },
-};
-
-export const WithValidation = {
-  render: FormTemplate,
-
-  args: {
-    ...defaultProps,
-    label: "Select Cat or Dog",
-    validate: (value) => {
-      if (value.selectedKey == null || value.selectedKey === "cat" || value.selectedKey === "dog") {
-        return;
-      }
-
-      return "Please select a valid animal";
-    },
-  },
-};
-
 export const WithSections = {
   render: WithSectionsTemplate,
 
@@ -930,14 +854,6 @@ export const WithAriaLabel = {
     ...defaultProps,
     label: "Select an animal 🐹",
     "aria-label": "Select an animal",
-  },
-};
-
-export const WithReactHookForm = {
-  render: WithReactHookFormTemplate,
-
-  args: {
-    ...defaultProps,
   },
 };
 
@@ -976,10 +892,3 @@ export const CustomStyles = {
   },
 };
 
-export const CustomStylesWithCustomItems = {
-  render: CustomStylesWithCustomItemsTemplate,
-
-  args: {
-    ...defaultProps,
-  },
-};
