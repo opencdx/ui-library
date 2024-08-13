@@ -106,7 +106,7 @@ const WithFooterTemplate = (args: CardProps) => (
         alt="nextui logo"
         height={34}
         radius="lg"
-        src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+        src="https://nextui.org/images/card-example-3.jpeg"
         width={34}
       />
       <div className="flex flex-col">
@@ -137,7 +137,7 @@ const WithAbsImageHeaderTemplate = (args: CardProps) => (
       alt="Card background"
       className="w-full h-[440px] object-cover"
       height={440}
-      src={"/images/assets/apple-event.jpeg"}
+      src={"./apple-event.jpeg"}
       width={330}
     />
   </Card>
@@ -159,7 +159,7 @@ const WithAbsImgHeaderFooterTemplate = (args: CardProps) => (
       alt="Card background"
       className="w-full h-[440px] pt-10 object-contain"
       height={440}
-      src={"/images/assets/homepod.jpeg"}
+      src={"./homepod.jpeg"}
       width={300}
     />
     <CardFooter className="justify-between absolute bottom-0 z-10">
@@ -244,7 +244,7 @@ const CoverImgTemplate = (args: CardProps) => (
           <img
             alt="Breathing app icon"
             className="rounded-full w-10 h-11 bg-black"
-            src={"/images/assets/breathing-app-icon.jpeg"}
+            src={"./breathing-app-icon.jpeg"}
           />
           <div className="flex flex-col">
             <p className="text-xs text-white/60">Breathing App</p>
@@ -268,7 +268,7 @@ const CenterImgTemplate = (args: CardProps) => (
       <Image
         isBlurred
         alt="Card background"
-        src={"/images/assets/local-image-1.jpeg"}
+        src={"./local-image-1.jpeg"}
         width={300}
       />
     </CardBody>
@@ -352,39 +352,39 @@ const CenterImgWithHeaderTemplate = (args: CardProps) => {
   const list = [
     {
       title: "Mac",
-      img: "/images/assets/mac.png",
+      img: "./mac.png",
     },
     {
       title: "iPhone",
-      img: "/images/assets/iphone.png",
+      img: "./iphone.png",
     },
     {
       title: "iPad",
-      img: "/images/assets/ipad.png",
+      img: "./ipad.png",
     },
     {
       title: "Apple Watch",
-      img: "/images/assets/apple-watch.png",
+      img: "./apple-watch.png",
     },
     {
       title: "AirPods",
-      img: "/images/assets/airpods.png",
+      img: "./airpods.png",
     },
     {
       title: "AirTag",
-      img: "/images/assets/airtag.png",
+      img: "./airtag.png",
     },
     {
       title: "Apple TV",
-      img: "/images/assets/appletv.png",
+      img: "./appletv.png",
     },
     {
       title: "HomePod mini",
-      img: "/images/assets/homepod-mini.png",
+      img: "./homepod-mini.png",
     },
     {
       title: "Accessories",
-      img: "/images/assets/accessories.png",
+      img: "./accessories.png",
     },
   ];
 
