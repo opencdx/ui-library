@@ -33,6 +33,7 @@
     "@nextui-org/switch": "^2.0.33",
     "@nextui-org/system": "2.2.2",
     "@nextui-org/theme": "2.2.6",
+    "@nextui-org/use-infinite-scroll": "^2.1.5",
     "@radix-ui/react-tooltip": "^1.1.1",
     "@react-aria/focus": "3.17.1",
     "@react-aria/form": "3.0.5",
@@ -69,6 +70,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^1.5.0",
     "@cypress/code-coverage": "^3.12.42",
+    "@react-stately/data": "3.11.4",
     "@storybook/addon-essentials": "^8.1.11",
     "@storybook/addon-interactions": "^8.1.11",
     "@storybook/addon-links": "^8.1.11",
