@@ -299,5 +299,25 @@ export {useUser} from "./user/use-user";
 // export component
 export {default as User} from "./user/user";
 
+import Pagination from "./pagination/pagination";
+import PaginationItem from "./pagination/pagination-item";
+import PaginationCursor from "./pagination/pagination-cursor";
+
+// export types
+export type {PaginationProps} from "./pagination/pagination";
+export type {PaginationItemRenderProps} from "./pagination/use-pagination";
+export type {PaginationItemProps} from "./pagination/pagination-item";
+export type {PaginationCursorProps} from "./pagination/pagination-cursor";
+
+// misc
+export type {PaginationItemValue} from "@nextui-org/use-pagination";
+export {PaginationItemType} from "@nextui-org/use-pagination";
+
+// export hooks
+export {usePagination} from "./pagination/use-pagination";
+export {usePaginationItem} from "./pagination/use-pagination-item";
+
+// export component
+export {Pagination, PaginationItem, PaginationCursor};
 
 
