@@ -10,6 +10,8 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import { default as PreviewIconMui } from '@mui/icons-material/Preview';
 import { default as SaveIconMUI } from '@mui/icons-material/Save';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 export const PreviewIcon = ({ }) => (
     <PreviewIconMui />
@@ -57,4 +59,12 @@ export const DownloadIcon = ({ }) => (
 
 export const AddIcon = ({ }) => (
     <AddIconMui />
+);
+
+export const ExpandIcon = ({ }) => (
+    <ExpandMoreIcon />
+);
+
+export const RightChevronIcon = ({ }) => (
+    <ChevronRightIcon />
 );
