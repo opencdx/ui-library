@@ -12,6 +12,7 @@ import { default as PreviewIconMui } from '@mui/icons-material/Preview';
 import { default as SaveIconMUI } from '@mui/icons-material/Save';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 export const PreviewIcon = ({ }) => (
     <PreviewIconMui />
@@ -63,6 +64,10 @@ export const AddIcon = ({ }) => (
 
 export const ExpandIcon = ({ }) => (
     <ExpandMoreIcon />
+);
+
+export const CollapseIcon = ({ }) => (
+    <ExpandLessIcon />
 );
 
 export const RightChevronIcon = ({ }) => (
