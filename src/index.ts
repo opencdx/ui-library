@@ -320,6 +320,6 @@ export {usePaginationItem} from "./pagination/use-pagination-item";
 // export component
 export {Pagination, PaginationItem, PaginationCursor};
 
-export {PreviewIcon, ArrowForwardIcon, SaveIcon, EditIcon, DeleteIcon, DeleteForeverIcon, UpArrow, DownArrow, DragIcon, ReturnIcon, DownloadIcon, AddIcon, ExpandIcon, RightChevronIcon} from "./icons/icons";
+export {PreviewIcon, ArrowForwardIcon, SaveIcon, EditIcon, DeleteIcon, DeleteForeverIcon, UpArrow, DownArrow, DragIcon, ReturnIcon, DownloadIcon, AddIcon, ExpandIcon, RightChevronIcon, CollapseIcon} from "./icons/icons";
 
 
