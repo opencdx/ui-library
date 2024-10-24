@@ -21,7 +21,7 @@ const Dropdown = (props: DropdownProps) => {
 
   return (
     <DropdownProvider value={context}>
-      <Popover {...context.getPopoverProps()}>
+      <Popover {...context.getPopoverProps()} ref={undefined}>
         {menuTrigger}
         {menu}
       </Popover>

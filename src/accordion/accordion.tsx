@@ -29,7 +29,7 @@ const AccordionGroup = forwardRef<"div", AccordionProps>((props, ref) => {
 
   const content = useMemo(() => {
     
-    return [...state.collection].map((item, index) => {
+    return Array.from(state.collection).map((item, index) => {
       const classNames = {...itemClasses, ...(item.props.classNames || {})};
 
       return (

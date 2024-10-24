@@ -11,8 +11,7 @@ import {HTMLNextUIProps, PropGetter, useProviderContext} from "@nextui-org/syste
 import {filterDOMProps, useDOMRef} from "@nextui-org/react-utils";
 import {clsx, safeAriaLabel} from "@nextui-org/shared-utils";
 import {mergeProps} from "@react-aria/utils";
-
-import {RadioProps} from "@/index";
+import { RadioProps } from "./radio";
 
 interface Props extends Omit<HTMLNextUIProps<"div">, "onChange"> {
   /**

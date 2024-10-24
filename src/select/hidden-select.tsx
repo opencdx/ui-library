@@ -93,7 +93,7 @@ export function useHiddenSelect<T>(
       type: "text",
       tabIndex: modality == null || state.isFocused || state.isOpen ? -1 : 0,
       autoComplete,
-      value: [...state.selectedKeys].join(",") ?? "",
+      value: Array.from(state.selectedKeys).join(",") ?? "",
       required: isRequired,
       style: {fontSize: 16},
       onFocus: () => triggerRef.current?.focus(),
@@ -112,8 +112,8 @@ export function useHiddenSelect<T>(
       size: state.collection.size,
       value:
         selectionMode === "multiple"
-          ? [...state.selectedKeys].map((k) => String(k))
-          : [...state.selectedKeys][0] ?? "",
+          ? Array.from(state.selectedKeys).map((k) => String(k))
+          : Array.from(state.selectedKeys)[0] ?? "",
       multiple: selectionMode === "multiple",
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
         state.setSelectedKeys(e.target.value);
@@ -147,7 +147,7 @@ export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
           {label}
             <select {...selectProps} ref={selectRef} value={String(selectProps.value)}>
             <option />
-            {[...state.collection.getKeys()].map((key) => {
+            {Array.from(state.collection.getKeys()).map((key) => {
               let item = state.collection.getItem(key);
 
               if (item?.type === "item") {
@@ -169,7 +169,7 @@ export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
         disabled={isDisabled}
         name={name}
         type="hidden"
-        value={[...state.selectedKeys].join(",") ?? ""}
+        value={Array.from(state.selectedKeys).join(",") ?? ""}
       />
     );
   }
