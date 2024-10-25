@@ -49,7 +49,7 @@ function Tabs<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLDivElemen
           {layoutGroupEnabled ? <LayoutGroup id={layoutId}>{tabs}</LayoutGroup> : tabs}
         </Component>
       </div>
-      {[...state.collection].map((item) => {
+      {Array.from(state.collection).map((item) => {
         return (
           <TabPanel
             key={item.key}
