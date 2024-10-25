@@ -259,7 +259,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
   state = {
     ...state,
     ...(originalProps.isDisabled && {
-      disabledKeys: new Set([...state.collection.getKeys()]),
+      disabledKeys: new Set(Array.from(state.collection.getKeys())),
     }),
   };
 
@@ -269,7 +269,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
   useSafeLayoutEffect(() => {
     if (!domRef.current?.value) return;
 
-    state.setSelectedKeys(new Set([...state.selectedKeys, domRef.current.value]));
+    state.setSelectedKeys(new Set(Array.from(state.selectedKeys).concat(domRef.current.value)));
   }, [domRef.current]);
 
   const {
@@ -678,3 +678,4 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
 }
 
 export type UseSelectReturn = ReturnType<typeof useSelect>;
+

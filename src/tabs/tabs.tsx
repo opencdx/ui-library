@@ -38,7 +38,7 @@ function Tabs<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLDivElemen
     disableCursorAnimation: values.disableCursorAnimation,
   };
 
-  const tabs = [...state.collection].map((item) => (
+  const tabs = Array.from(state.collection).map((item) => (
     <Tab key={item.key} item={item} {...tabsProps} {...item.props} />
   ));
 
