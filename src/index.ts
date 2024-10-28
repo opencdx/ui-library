@@ -312,7 +312,6 @@ export type {PaginationCursorProps} from "./pagination/pagination-cursor";
 // misc
 export type {PaginationItemValue} from "@nextui-org/use-pagination";
 export {PaginationItemType} from "@nextui-org/use-pagination";
-
 // export hooks
 export {usePagination} from "./pagination/use-pagination";
 export {usePaginationItem} from "./pagination/use-pagination-item";
@@ -320,6 +319,7 @@ export {usePaginationItem} from "./pagination/use-pagination-item";
 // export component
 export {Pagination, PaginationItem, PaginationCursor};
 
-export {PreviewIcon, ArrowForwardIcon, SaveIcon, EditIcon, DeleteIcon, DeleteForeverIcon, UpArrow, DownArrow, DragIcon, ReturnIcon, DownloadIcon, AddIcon, ExpandIcon, RightChevronIcon, CollapseIcon} from "./icons/icons";
+export {PreviewIcon, ArrowForwardIcon, SaveIcon, EditIcon, DeleteIcon, DeleteForeverIcon, UpArrow, DownArrow, DragIcon, ReturnIcon, DownloadIcon, AddIcon, ExpandIcon, RightChevronIcon, CollapseIcon, LeftChevronIcon, CodeIcon, MonitorIcon, ContentCopyIcon, TitleIcon} from "./icons/icons";
+
 
 
