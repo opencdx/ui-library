@@ -18,6 +18,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import MonitorIcon from '@mui/icons-material/Monitor';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import TitleIcon from '@mui/icons-material/Title';
+import CloseIcon from '@mui/icons-material/Close';
 
 export {
     PreviewIcon,
@@ -40,4 +41,5 @@ export {
     MonitorIcon,
     ContentCopyIcon,
     TitleIcon,
+    CloseIcon
 };
