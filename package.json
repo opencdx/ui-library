@@ -40,7 +40,7 @@
     "@nextui-org/use-infinite-scroll": "^2.1.5",
     "@radix-ui/react-tooltip": "^1.1.1",
     "@react-aria/focus": "3.17.1",
-    "@react-aria/form": "3.0.5",
+    "@react-aria/form": "3.0.12",
     "@react-aria/interactions": "3.21.3",
     "@react-aria/ssr": "3.9.4",
     "@react-aria/textfield": "3.14.5",
