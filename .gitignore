@@ -10,6 +10,7 @@ yarn-error.log
 yarn.lock
 package-lock.json
 .storybook
+*.tgz
 
 # Next.js build output
 .next/
