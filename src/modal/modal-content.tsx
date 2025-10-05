@@ -98,7 +98,7 @@ const ModalContent = forwardRef<"div", ModalContentProps, KeysToOmit>((props, _)
   }, [backdrop, disableAnimation, getBackdropProps]);
 
   // Ensure we don't pass an HTMLElement ref into a div motion element
-  const {ref: _ignoredRef, ...safeMotionProps} = (motionProps as HTMLMotionProps<"div">) || ({} as HTMLMotionProps<"div">);
+  const {ref: _ignoredRef, ...safeMotionProps} = (motionProps as any) || {};
 
   const contents = disableAnimation ? (
     <div className={slots.wrapper({class: classNames?.wrapper})} data-slot="wrapper">
