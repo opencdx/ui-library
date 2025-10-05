@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -24,6 +24,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "*.ts", "*.tsx", "*.js","*.jsx"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "types/**/*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "cypress",
+    "**/*.cy.ts",
+    "**/*.cy.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    ".storybook"
+  ]
 }
