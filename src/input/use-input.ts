@@ -166,6 +166,10 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     setInputValue(domRef.current.value);
   }, [domRef.current]);
 
+  const safeOnFocus = (originalProps.onFocus as unknown) as
+    | ((e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>) => void)
+    | undefined;
+
   const {
     labelProps,
     inputProps,
@@ -174,9 +178,13 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     validationDetails,
     descriptionProps,
     errorMessageProps,
-  } = useTextField(
+  } = (useTextField as unknown as (
+    props: any,
+    ref: React.RefObject<HTMLInputElement> | React.RefObject<HTMLTextAreaElement>,
+  ) => any)(
     {
-      ...originalProps,
+      ...(originalProps as any),
+      onFocus: safeOnFocus,
       validationBehavior,
       autoCapitalize: originalProps.autoCapitalize as AutoCapitalize,
       value: inputValue,
@@ -188,7 +196,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
       inputElementType: isMultiline ? "textarea" : "input",
       onChange: setInputValue,
     },
-    domRef,
+    (domRef as unknown) as any,
   );
 
   const {isFocusVisible, isFocused, focusProps} = useFocusRing({

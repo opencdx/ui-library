@@ -12,6 +12,8 @@ package-lock.json
 .storybook
 *.tgz
 
+*.tgz
+
 # Next.js build output
 .next/
 out/
