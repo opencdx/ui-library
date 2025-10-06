@@ -395,7 +395,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       ...mergeProps(buttonProps, slotsProps.clearButtonProps),
       // disable original focus and state toggle from react aria
       onPressStart: () => {},
-      onPress: (e: PressEvent) => {
+      onPress: (e: any) => {
         slotsProps.clearButtonProps?.onPress?.(e);
 
         if (state.selectedItem) {
