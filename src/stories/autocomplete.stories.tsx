@@ -1,7 +1,7 @@
 import type {ValidationResult} from "@react-types/shared";
 
 import React, {Key} from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {useForm} from "react-hook-form";
 import {autocomplete, input, button} from "@nextui-org/theme";
 import {

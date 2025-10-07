@@ -1,5 +1,5 @@
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {button, pagination} from "@nextui-org/theme";
 import {cn} from "@nextui-org/theme";
 import {ChevronIcon} from "@nextui-org/shared-icons";

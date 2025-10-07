@@ -3,7 +3,7 @@ import type {ValidationResult} from "@react-types/shared";
 
 import React, {ChangeEvent} from "react";
 import {useForm} from "react-hook-form";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {select, button} from "@nextui-org/theme";
 import {PetBoldIcon} from "@nextui-org/shared-icons";
 import {Avatar} from "@nextui-org/avatar";

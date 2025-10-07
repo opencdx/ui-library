@@ -1,5 +1,5 @@
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {breadcrumbItem} from "@nextui-org/theme";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@/index";
 import {Button} from "@nextui-org/button";

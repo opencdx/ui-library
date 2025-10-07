@@ -1,7 +1,7 @@
 import type {Selection} from "@react-types/shared";
 
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {accordionItem, button} from "@nextui-org/theme";
 import {
   AnchorIcon,

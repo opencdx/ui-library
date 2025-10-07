@@ -1,6 +1,6 @@
 
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {button, link, tabs} from "@nextui-org/theme";
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";

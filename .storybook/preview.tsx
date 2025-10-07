@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NextUIProvider } from '@nextui-org/system';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 import "../src/styles/globals.css";
 

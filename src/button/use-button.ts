@@ -24,6 +24,7 @@ import {
 import { useFocusRing } from '@react-aria/focus';
 import { useHover } from '@react-aria/interactions';
 import { chain, mergeProps } from '@react-aria/utils';
+import type { PressEvent } from '@react-types/shared';
 
 interface Props extends HTMLNextUIProps<'button'> {
   /**
@@ -138,7 +139,7 @@ export function useButton(props: UseButtonProps) {
   );
 
   const {
-    onClick: onRippleClickHandler,
+    onPress: onRippleClickHandler,
     onClear: onClearRipple,
     ripples,
   } = useRipple();
@@ -146,7 +147,7 @@ export function useButton(props: UseButtonProps) {
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       if (disableRipple || isDisabled || disableAnimation) return;
-      domRef.current && onRippleClickHandler(e);
+      domRef.current && onRippleClickHandler((e as unknown) as PressEvent);
     },
     [disableRipple, isDisabled, disableAnimation, domRef, onRippleClickHandler],
   );

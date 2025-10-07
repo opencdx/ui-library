@@ -1,5 +1,5 @@
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {card} from "@nextui-org/theme";
 import {Link} from "@nextui-org/link";
 import {Button} from "@nextui-org/button";

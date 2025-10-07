@@ -2,7 +2,7 @@
 import type {ValidationResult} from "@react-types/shared";
 
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {checkbox} from "@nextui-org/theme";
 import {button} from "@nextui-org/theme";
 

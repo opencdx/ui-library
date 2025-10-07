@@ -1,6 +1,6 @@
 import type {VariantProps} from "@nextui-org/theme";
 
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import React from "react";
 import {tv} from "@nextui-org/theme";
 import {link} from "@nextui-org/theme";

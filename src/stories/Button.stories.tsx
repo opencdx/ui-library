@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, ButtonProps } from '@/index';
 import { Camera, HeadphonesIcon, Notification } from '@nextui-org/shared-icons';
 import { button } from '@nextui-org/theme';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 export default {
   title: 'Components/Button',

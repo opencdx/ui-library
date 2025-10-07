@@ -7,7 +7,7 @@ import {
 } from '@/index';
 import { CloseIcon } from '@nextui-org/shared-icons';
 import { button, checkbox } from '@nextui-org/theme';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
 
 export default {
