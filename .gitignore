@@ -4,12 +4,11 @@ node_modules
 *.log
 .DS_Store
 *.iml
-node_modules
 .idea
 yarn-error.log
-yarn.lock
-package-lock.json
-.storybook
+*.tgz
+
+*.tgz
 
 # Next.js build output
 .next/
@@ -17,4 +16,36 @@ out/
 
 # VSCode
 .vscode/
+
+# Build output
+dist/
+storybook-static/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Cypress artifacts
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+cypress/results/
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Caches
+.eslintcache
+.cache/
+
+# Environment files
+.env
+.env.*
+
+# OS
+Thumbs.db
+
+# Local test package
+ui-library/
 
