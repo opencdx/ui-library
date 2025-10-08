@@ -159,7 +159,7 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
     inputProps,
     isPressed: isPressedKeyboard,
     isReadOnly,
-  } = useReactAriaSwitch(ariaSwitchProps, state, inputRef);
+  } = useReactAriaSwitch(ariaSwitchProps, state as any, inputRef);
   const {focusProps, isFocused, isFocusVisible} = useFocusRing({autoFocus: inputProps.autoFocus});
   const {hoverProps, isHovered} = useHover({
     isDisabled: inputProps.disabled,

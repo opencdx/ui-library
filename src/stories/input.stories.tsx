@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {input} from "@nextui-org/theme";
 import {
   MailFilledIcon,

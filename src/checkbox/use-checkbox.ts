@@ -187,7 +187,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     ? // eslint-disable-next-line
       useReactAriaCheckboxGroupItem({...ariaCheckboxProps}, groupContext.groupState, inputRef)
     : // eslint-disable-next-line
-      useReactAriaCheckbox({...ariaCheckboxProps}, toggleState, inputRef);
+      useReactAriaCheckbox({...ariaCheckboxProps}, toggleState as any, inputRef);
 
   const isInteractionDisabled = isDisabled || isReadOnly;
 

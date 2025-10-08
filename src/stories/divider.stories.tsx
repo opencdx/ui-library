@@ -1,5 +1,5 @@
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {divider} from "@nextui-org/theme";
 
 import {Divider, DividerProps} from "@/index";

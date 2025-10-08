@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {toggle} from "@nextui-org/theme";
 import {SunFilledIcon, MoonFilledIcon} from "@nextui-org/shared-icons";
 import {button} from "@nextui-org/theme";

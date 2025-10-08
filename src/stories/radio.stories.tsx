@@ -12,7 +12,7 @@ import { clsx } from '@nextui-org/shared-utils';
 import { button, radio } from '@nextui-org/theme';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import type { ValidationResult } from '@react-types/shared';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 export default {
   title: 'Components/RadioGroup',

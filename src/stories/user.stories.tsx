@@ -1,6 +1,6 @@
 
 import React from "react";
-import {Meta} from "@storybook/react";
+import {Meta} from "@storybook/react-vite";
 import {Link} from "@nextui-org/link";
 
 import {User} from "@/index";

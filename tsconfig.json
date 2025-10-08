@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2020",
     "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "jsx": "react-jsx",
+    "incremental": false,
     "plugins": [
       {
         "name": "next"
@@ -24,6 +24,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "*.ts", "*.tsx", "*.js","*.jsx"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "types/**/*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "cypress",
+    "**/*.cy.ts",
+    "**/*.cy.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    ".storybook"
+  ]
 }
