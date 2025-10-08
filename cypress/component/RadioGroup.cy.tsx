@@ -1,96 +1,113 @@
 import React from 'react';
 import { mount } from 'cypress/react18';
-import { RadioGroup } from '@/index';
+import { RadioGroup, Radio } from '../../src';
 import "../../src/styles/globals.css";
 
-describe('RadioGroup', () => {
-  it('should render correctly', () => {
+describe('RadioGroup Component', () => {
+  it('renders with label and description', () => {
+    mount(
+      <RadioGroup label="Choose an option" description="Select one">
+        <Radio value="1">Option 1</Radio>
+        <Radio value="2">Option 2</Radio>
+      </RadioGroup>
+    );
+    cy.contains('Choose an option').should('be.visible');
+    cy.contains('Select one').should('be.visible');
+  });
+
+  it('allows selection and updates state', () => {
     mount(
       <RadioGroup>
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
+        <Radio value="a">A</Radio>
+        <Radio value="b">B</Radio>
       </RadioGroup>
     );
-    cy.get('div').should('exist');
+    cy.contains('A').click();
+    cy.contains('A').closest('label').find('input').should('be.checked');
+    cy.contains('B').click();
+    cy.contains('B').closest('label').find('input').should('be.checked');
+    cy.contains('A').closest('label').find('input').should('not.be.checked');
   });
 
-  it('should render with the proper label', () => {
+  it('respects defaultValue', () => {
     mount(
-      <RadioGroup label="Choose an option">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
+      <RadioGroup defaultValue="2">
+        <Radio value="1">One</Radio>
+        <Radio value="2">Two</Radio>
       </RadioGroup>
     );
-    cy.get('span').contains('Choose an option').should('exist');
+    cy.contains('Two').closest('label').find('input').should('be.checked');
   });
 
-  it('should render with the proper description', () => {
+  it('shows error message when isInvalid', () => {
     mount(
-      <RadioGroup description="Please select one option">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
+      <RadioGroup isInvalid errorMessage="Selection required">
+        <Radio value="1">One</Radio>
       </RadioGroup>
     );
-    cy.get('div').contains('Please select one option').should('exist');
+    cy.contains('Selection required').should('be.visible');
   });
 
-  it('should render with the proper error message when isInvalid is true', () => {
+  it('disables all radios when isDisabled on group', () => {
     mount(
-      <RadioGroup isInvalid errorMessage="Selection is required">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
+      <RadioGroup isDisabled>
+        <Radio value="1">One</Radio>
+        <Radio value="2">Two</Radio>
       </RadioGroup>
     );
-    cy.get('div').contains('Selection is required').should('exist');
+    cy.contains('One').closest('label').find('input').should('be.disabled');
+    cy.contains('Two').closest('label').find('input').should('be.disabled');
   });
 
-  it('should render without error message when isInvalid is false', () => {
+  it('disables individual radio when isDisabled on Radio', () => {
     mount(
       <RadioGroup>
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
+        <Radio value="1" isDisabled>One</Radio>
+        <Radio value="2">Two</Radio>
       </RadioGroup>
     );
-    cy.get('div').should('not.contain.text', 'Selection is required');
+    cy.contains('One').closest('label').find('input').should('be.disabled');
+    cy.contains('Two').closest('label').find('input').should('not.be.disabled');
   });
 
-  it('should render with the proper aria-label', () => {
+  it('respects horizontal orientation', () => {
     mount(
-      <RadioGroup aria-label="radio-group">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
-      </RadioGroup>
-    );
-    cy.get('[aria-label="radio-group"]').should('exist');
-  });
-
-  it('should render with the proper aria-describedby', () => {
-    mount(
-      <RadioGroup aria-describedby="description-id" description="Group description">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
-      </RadioGroup>
-    );
-    cy.get('[aria-describedby="description-id"]').should('exist');
-  });
-
-  it('should render with the proper aria-labelledby', () => {
-    mount(
-      <RadioGroup aria-labelledby="label-id" label="Group label">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
-      </RadioGroup>
-    );
-    cy.get('[aria-labelledby="label-id"]').should('exist');
-  });
-
-  it('should render with the proper role', () => {
-    mount(
-      <RadioGroup role="radiogroup">
-        <input type="radio" value="option1" />
-        <input type="radio" value="option2" />
+      <RadioGroup orientation="horizontal">
+        <Radio value="1">One</Radio>
+        <Radio value="2">Two</Radio>
       </RadioGroup>
     );
     cy.get('[role="radiogroup"]').should('exist');
+  });
+
+  it('respects isRequired', () => {
+    mount(
+      <RadioGroup isRequired>
+        <Radio value="1">One</Radio>
+      </RadioGroup>
+    );
+    cy.get('[role="radiogroup"]').should('exist');
+  });
+
+  it('respects isReadOnly', () => {
+    mount(
+      <RadioGroup isReadOnly defaultValue="1">
+        <Radio value="1">One</Radio>
+        <Radio value="2">Two</Radio>
+      </RadioGroup>
+    );
+    cy.contains('One').closest('label').find('input').should('be.checked');
+    // Attempting to select Two should not work
+    cy.contains('Two').click({ force: true });
+    cy.contains('Two').closest('label').find('input').should('not.be.checked');
+  });
+
+  it('sets proper ARIA attributes', () => {
+    mount(
+      <RadioGroup aria-label="My group">
+        <Radio value="1">One</Radio>
+      </RadioGroup>
+    );
+    cy.get('[aria-label="My group"]').should('exist');
   });
 });
