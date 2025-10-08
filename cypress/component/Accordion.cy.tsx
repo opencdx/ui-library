@@ -58,9 +58,9 @@ describe('Accordion Component', () => {
   });
 
   it('has correct ARIA attributes', () => {
-    cy.contains('Header 1').should('have.attr', 'aria-expanded', 'false'); // Initially collapsed
+    cy.contains('Header 1').closest('button').should('have.attr', 'aria-expanded', 'false'); // Initially collapsed
     cy.contains('Header 1').click();
-    cy.contains('Header 1').should('have.attr', 'aria-expanded', 'true'); // Expanded
+    cy.contains('Header 1').closest('button').should('have.attr', 'aria-expanded', 'true'); // Expanded
   });
 
   it('shows and hides dividers based on props', () => {
@@ -84,7 +84,7 @@ describe('Accordion Component', () => {
   });
 
   it('applies focus styles correctly', () => {
-    cy.contains('Header 1').focus().should('have.attr', 'data-focus', 'true'); // Check focus
+    cy.contains('Header 1').closest('button').focus().should('have.attr', 'data-focus', 'true'); // Check focus
   });
 
   it('handles selection behavior', () => {
@@ -136,6 +136,103 @@ describe('Accordion Component', () => {
 
     cy.contains('Header 2').click(); // Should expand
     cy.contains('Content 2').should('be.visible');
+  });
+
+  it('keeps content mounted when keepContentMounted=true', () => {
+    mount(
+      <Accordion keepContentMounted>
+        <AccordionItem title="Header 1">KM Content 1</AccordionItem>
+        <AccordionItem title="Header 2">KM Content 2</AccordionItem>
+      </Accordion>
+    );
+    // Content should exist in DOM even when collapsed
+    cy.contains('KM Content 1').should('exist');
+    cy.contains('KM Content 2').should('exist');
+    // Expand and verify visibility toggles
+    cy.contains('Header 1').click();
+    cy.contains('KM Content 1').should('be.visible');
+  });
+
+  it('respects hideIndicator and supports custom indicator', () => {
+    // Default shows indicator element (aria-hidden)
+    mount(
+      <Accordion>
+        <AccordionItem title="Header 1">Content 1</AccordionItem>
+      </Accordion>
+    );
+    cy.contains('Header 1').parent().parent().find('[aria-hidden="true"]').should('exist');
+
+    // hideIndicator removes indicator element
+    mount(
+      <Accordion>
+        <AccordionItem title="Header 1" hideIndicator>
+          Content 1
+        </AccordionItem>
+      </Accordion>
+    );
+    cy.contains('Header 1').parent().parent().find('[aria-hidden="true"]').should('not.exist');
+
+    // Custom indicator function
+    mount(
+      <Accordion>
+        <AccordionItem title="Header 1" indicator={() => <span data-testid="custom-indicator">I</span>}>
+          Content 1
+        </AccordionItem>
+      </Accordion>
+    );
+    cy.get('[data-testid="custom-indicator"]').should('exist');
+  });
+
+  it('renders startContent and subtitle when provided', () => {
+    mount(
+      <Accordion>
+        <AccordionItem title="Header 1" subtitle="Sub 1" startContent={<span data-testid="start">S</span>}>
+          Content 1
+        </AccordionItem>
+      </Accordion>
+    );
+    cy.get('[data-testid="start"]').should('exist');
+    cy.contains('Sub 1').should('exist');
+  });
+
+  it('variant="splitted" hides dividers even when showDivider=true', () => {
+    mount(
+      <Accordion variant="splitted" showDivider>
+        <AccordionItem title="Header 1">Content 1</AccordionItem>
+        <AccordionItem title="Header 2">Content 2</AccordionItem>
+      </Accordion>
+    );
+    cy.get('hr').should('not.exist');
+  });
+
+  it('selectionBehavior="replace" closes previously opened item', () => {
+    mount(
+      <Accordion selectionBehavior="replace">
+        <AccordionItem title="Header 1">Content 1</AccordionItem>
+        <AccordionItem title="Header 2">Content 2</AccordionItem>
+      </Accordion>
+    );
+    cy.contains('Header 1').click();
+    cy.contains('Content 1').should('be.visible');
+    cy.contains('Header 2').click();
+    cy.contains('Content 2').should('be.visible');
+    cy.contains('Content 1').should('not.exist');
+  });
+
+  it('disableAnimation toggles data-open on content', () => {
+    mount(
+      <Accordion>
+        <AccordionItem title="Header 1" disableAnimation>
+          Content 1
+        </AccordionItem>
+      </Accordion>
+    );
+    // Initially closed
+    cy.contains('Content 1').parent().should('have.attr', 'data-open', 'false');
+    cy.contains('Header 1').click();
+    cy.contains('Content 1').parent().should('have.attr', 'data-open', 'true');
+    cy.contains('Header 1').click();
+    cy.contains('Content 1').parent().should('have.attr', 'data-open', 'false');
   });
 
 });

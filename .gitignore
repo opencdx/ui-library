@@ -49,3 +49,6 @@ Thumbs.db
 # Local test package
 ui-library/
 
+# Cursor editor workspace
+.cursor/
+
