@@ -319,7 +319,7 @@ export {usePaginationItem} from "./pagination/use-pagination-item";
 // export component
 export {Pagination, PaginationItem, PaginationCursor};
 
-// Icon exports removed: internal MUI icons are not shipped by the library
+export {PreviewIcon, ArrowForwardIcon, SaveIcon, EditIcon, DeleteIcon, DeleteForeverIcon, UpArrow, DownArrow, DragIcon, ReturnIcon, DownloadIcon, AddIcon, ExpandIcon, RightChevronIcon, CollapseIcon, LeftChevronIcon, CodeIcon, MonitorIcon, ContentCopyIcon, TitleIcon, CloseIcon} from "./icons/icons";
 
 
 
