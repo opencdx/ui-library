@@ -6,6 +6,8 @@
 - Purpose: shared UI primitives/design system for consistent UX across apps
 - Usage examples are available in Storybook
 
+**Important:** See [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md) for composition patterns and compatibility constraints.
+
 ### Requirements
 - Node 20+ and npm 10+
 - Peer deps provided by consumer:
@@ -140,19 +142,110 @@ export default {
 };
 ```
 
+### Component Composition Guidelines
+
+#### Using User component in constrained contexts
+
+**Problem:** Some parent components (like NextUI `Navbar`, custom wrappers using `React.Children.map`) cannot accept `User` as a direct child inside `Button` due to how React element validation works.
+
+**Symptoms:**
+```
+Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store})
+```
+
+**Solutions:**
+
+1. **Use `UserButton` composite component** (Recommended):
+```tsx
+import { UserButton } from 'ui-library';
+
+<DropdownTrigger>
+  <UserButton
+    userProps={{ name: "John Doe", description: "Admin" }}
+    buttonProps={{ variant: "light", color: "primary" }}
+    endContent={<ChevronDownIcon />}
+  />
+</DropdownTrigger>
+```
+
+2. **Render User outside constrained components**:
+```tsx
+// Good: User is a sibling, not nested in Button
+<div className="flex items-center gap-2">
+  <User name="John Doe" />
+  <Button>Actions</Button>
+</div>
+
+// Avoid: User directly inside Button inside Navbar
+<Navbar>
+  <Button><User name="John" /></Button>  {/* ❌ May fail */}
+</Navbar>
+```
+
+3. **Use plain text when User display isn't critical**:
+```tsx
+<Button>John Doe</Button>
+```
+
+#### Component compatibility matrix
+
+| Parent Component | Direct `User` child | `UserButton` | Plain text |
+|-----------------|---------------------|--------------|------------|
+| `Button` (standalone) | ✅ Works | ✅ Works | ✅ Works |
+| `Button` in `Navbar` | ❌ Fails | ✅ Works | ✅ Works |
+| `Button` in `Dropdown` | ✅ Works | ✅ Works | ✅ Works |
+| Custom components using `React.Children.map` | ❌ May fail | ✅ Works | ✅ Works |
+
 ### Troubleshooting
-- “Cannot use import statement outside a module”: run under a bundler or mark your app as ESM.
-- Tailwind error about PostCSS plugin: install `@tailwindcss/postcss` and update `postcss.config.js`.
-- Framer Motion/NextUI peer warnings: align versions as noted above.
-- Next-only modules in Storybook (e.g., next/image): this Storybook uses a mock alias; ensure `.storybook/main.ts` includes the alias and `preview.tsx` provides any required providers.
- - Stale lock/ERESOLVE (clean reinstall):
+
+#### Common errors
+
+- **"Cannot use import statement outside a module"**: run under a bundler or mark your app as ESM.
+- **Tailwind error about PostCSS plugin**: install `@tailwindcss/postcss` and update `postcss.config.js`.
+- **Framer Motion/NextUI peer warnings**: align versions as noted above.
+- **Next-only modules in Storybook** (e.g., next/image): this Storybook uses a mock alias; ensure `.storybook/main.ts` includes the alias and `preview.tsx` provides any required providers.
+
+#### Button Ripple error: `NaN is an invalid value for the 'top' css style property`
+
+**Cause:** Button's ripple effect can't calculate click position when:
+- NextUI theme CSS isn't loaded (missing `position: relative` on button)
+- App isn't wrapped with `NextUIProvider`
+- Styles not imported in consuming app
+
+**Fix:**
+1. Import theme CSS in your app entry:
+```tsx
+import '@nextui-org/theme/dist/index.css';
+```
+
+2. Wrap your app with NextUIProvider:
+```tsx
+import { NextUIProvider } from '@nextui-org/react';
+
+export default function App() {
+  return (
+    <NextUIProvider>
+      {/* your app */}
+    </NextUIProvider>
+  );
+}
+```
+
+3. **Or** disable ripple if you don't need it:
+```tsx
+<Button disableRipple>Click me</Button>
+```
+
+#### Stale dependencies
+
+- Stale lock/ERESOLVE (clean reinstall):
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 ```
- - If issues persist:
+- If issues persist:
 ```bash
 npm dedupe
 npm cache verify
 ```
- - Avoid `--legacy-peer-deps` unless you fully understand the impact.
+- Avoid `--legacy-peer-deps` unless you fully understand the impact.

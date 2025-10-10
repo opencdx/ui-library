@@ -22,7 +22,7 @@ const Button = forwardRef<'button', ButtonProps>((props, ref) => {
     getButtonProps,
     getRippleProps,
     isIconOnly,
-  } = useButton({ ...props, ref });
+  } = useButton({ ...props, ref, disableRipple: props.disableRipple ?? true });
 
   return (
     <Component ref={domRef} className={styles} {...getButtonProps()}>

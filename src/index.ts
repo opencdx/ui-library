@@ -292,12 +292,14 @@ export {Tooltip};
 
 // export types
 export type {UserProps} from "./user/user";
+export type {UserButtonProps} from "./user/user-button";
 
 // export hooks
 export {useUser} from "./user/use-user";
 
-// export component
+// export components
 export {default as User} from "./user/user";
+export {default as UserButton} from "./user/user-button";
 
 import Pagination from "./pagination/pagination";
 import PaginationItem from "./pagination/pagination-item";
