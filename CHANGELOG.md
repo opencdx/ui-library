@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-10-11
+
 ### Added
 - **UserButton component**: Composite component that renders User inside Button safely
   - Solves compatibility issues when using User in contexts with React.Children.map constraints
