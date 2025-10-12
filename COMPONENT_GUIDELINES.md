@@ -1,5 +1,8 @@
 # OpenCDx UI Library - Component Composition Guidelines
 
+> **📖 Quick Links:**  
+> [README.md](./README.md) - Getting started | [DEV_GUIDE.md](./DEV_GUIDE.md) - Developer workflows | [TESTING.md](./TESTING.md) - Testing guide
+
 ## Overview
 
 This document provides best practices for using ui-library components in OpenCDx applications, with specific guidance on component composition patterns and known compatibility constraints.

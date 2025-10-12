@@ -12,12 +12,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Playwright testing**: Complete migration from Cypress to Playwright for component and E2E tests
   - ✅ Migrated 18 component test suites (70 total tests)
-  - ✅ **100% pass rate** with fast execution (~10-11 seconds)
+  - ✅ **100% pass rate** with fast execution (~6 seconds)
   - ✅ Multi-browser support (Chromium, Firefox, WebKit)
   - ✅ Interactive debugging with UI mode and time-travel
   - ✅ Comprehensive test coverage for all core components
   - Created `TESTING.md` guide with best practices and examples
   - Enhanced README with detailed testing documentation
+- **Interactive Development Menu** (`dev.sh`): User-friendly menu system for all development tasks
+  - 24 organized commands across 7 categories (Build, Test, Storybook, Quality, Security, etc.)
+  - Color-coded output with emojis for better UX
+  - Pre-release checklist automation (5 automated validation checks)
+  - Project status dashboard showing dependencies, build, tests, versions
+  - CI workflow simulator (runs same checks as GitHub Actions)
+  - Documented in README, DEV_GUIDE.md, and TESTING.md
+  - Perfect for onboarding new developers and daily workflows
+- **DEV_GUIDE.md**: Comprehensive developer guide (400+ lines)
+  - Complete development workflows and processes
+  - Step-by-step release process
+  - Security practices and dependency management
+  - Troubleshooting common issues
+  - Tips & tricks for productivity
+  - Quick reference cards for common tasks
+- **Security Scripts**: Added npm audit commands for vulnerability scanning
+  - `npm run audit` - Check production dependencies
+  - `npm run audit:dev` - Check all dependencies
+  - `npm run audit:fix` - Auto-fix vulnerabilities
+  - `npm run outdated` - Check for package updates
 - **UserButton component**: Composite component that renders User inside Button safely
   - Solves compatibility issues when using User in contexts with React.Children.map constraints
   - API: `userProps`, `buttonProps`, `className`, `endContent`

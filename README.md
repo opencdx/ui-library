@@ -6,9 +6,24 @@
 - Purpose: shared UI primitives/design system for consistent UX across apps
 - Usage examples are available in Storybook
 
-**Important:** 
-- See [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md) for composition patterns and compatibility constraints.
-- See [VERSION_COMPATIBILITY.md](../.github/node/VERSION_COMPATIBILITY.md) for required dependency versions across OpenCDx apps.
+---
+
+## 📚 Documentation Map
+
+**Start here based on what you need:**
+
+| What You Need | Read This |
+|---------------|-----------|
+| 🚀 **First time here?** | This README (installation & quick start) |
+| 💻 **Developing components?** | [DEV_GUIDE.md](./DEV_GUIDE.md) - Complete workflows |
+| 🧪 **Writing tests?** | [TESTING.md](./TESTING.md) - Testing guide & best practices |
+| 🏗️ **Component architecture?** | [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md) - Patterns & constraints |
+| 🔄 **Version compatibility?** | [VERSION_COMPATIBILITY.md](../.github/node/VERSION_COMPATIBILITY.md) - Dependency matrix |
+| 📝 **Release history?** | [CHANGELOG.md](./CHANGELOG.md) - Version history |
+
+---
+
+## 🚀 Quick Start
 
 ### Requirements
 - Node 20+ and npm 10+
@@ -76,6 +91,25 @@ module.exports = {
 
 ### Scripts
 
+**🎯 Quick Start - Interactive Development Menu:**
+```bash
+./dev.sh
+```
+Opens an interactive menu with 24+ commands organized into 7 categories:
+- 📦 Build & Development (build, clean, types)
+- 🧪 Testing (Playwright tests, UI mode, coverage)
+- 🎨 Storybook (dev server, build)
+- 🔍 Code Quality (lint, auto-fix)
+- 🔒 Security & Maintenance (audit, outdated)
+- 📦 Package Management (install, clean, tarball)
+- 🚀 Quick Actions (CI workflow, pre-release checklist)
+
+**Perfect for:**
+- New developers discovering available commands
+- Running pre-commit checks (`option 23: CI workflow`)
+- Pre-release validation (`option 24: Pre-release checklist`)
+- Quick access to common tasks without memorizing commands
+
 **Build & Development:**
 - `npm run build` - Type-check and compile library
 - `npm run lint` - Run ESLint
@@ -85,73 +119,31 @@ module.exports = {
 
 **Testing (Playwright):**
 - `npm run test` - Run all tests (component + E2E)
-- `npm run test:component` - Run component tests only (70 tests, ~10s)
+- `npm run test:component` - Run component tests only (70 tests, ~6s)
 - `npm run test:ui` - Interactive test UI with time-travel debugging
 - `npm run test:headed` - Run tests in visible browser
 - `npm run test:debug` - Debug tests with Playwright Inspector
-- `npm run coverage` - Generate test coverage report  
+- `npm run coverage` - Generate test coverage report
 
-### Testing with Playwright
-We use Playwright for both component and E2E testing, providing fast, reliable tests with excellent debugging capabilities.
+**Security & Maintenance:**
+- `npm run audit` - Check production dependencies for vulnerabilities
+- `npm run audit:dev` - Check all dependencies (including dev)
+- `npm run audit:fix` - Auto-fix vulnerabilities (safe updates)
+- `npm run outdated` - List packages with available updates  
 
-#### Quick Start
+### Testing
+
+**Quick start:**
 ```bash
-# Run all component tests
-npm run test:component
-
-# Run tests with UI (interactive mode with time-travel debugging)
-npm run test:ui
-
-# Run tests in headed mode (see browser)
-npm run test:headed
-
-# Debug a specific test
-npm run test:debug
+npm run test:component  # Run all 70 tests (~6s)
+npm run test:ui        # Interactive debugging
 ```
 
-#### Component Tests
-- **70 tests** covering 18 UI components
-- **100% pass rate** ✅ with fast execution (~10-11 seconds)
-- Tests located in `tests/component/`
-- Each component has its own `.spec.tsx` file
+- **70 tests** covering 18 components with **100% pass rate** ✅
+- Multi-browser support (Chromium, Firefox, WebKit)
+- Fast execution (~6 seconds)
 
-**Example test:**
-```tsx
-import { test, expect } from '@playwright/experimental-ct-react';
-import { Button } from '../../src/index';
-
-test('should render correctly', async ({ mount }) => {
-  const component = await mount(<Button>Click me</Button>);
-  await expect(component).toBeVisible();
-  await expect(component).toContainText('Click me');
-});
-```
-
-#### E2E Tests
-- Test complete user workflows in Storybook
-- Auto-starts Storybook server if needed
-- Run with `npm run test`
-
-#### Coverage & Reports
-```bash
-# Generate HTML coverage report
-npm run coverage
-
-# View results
-open playwright-report/index.html
-```
-
-#### Multi-browser Support
-Tests run on **Chromium**, **Firefox**, and **WebKit** by default, ensuring cross-browser compatibility.
-
-#### Debugging Tips
-1. **UI Mode**: `npm run test:ui` - Best for visual debugging with time-travel
-2. **Headed Mode**: `npm run test:headed` - See tests run in real browser
-3. **Debug Mode**: `npm run test:debug` - Step through tests with Playwright Inspector
-4. **Screenshots**: Automatically captured on test failures in `test-results/`
-
-#### CI/CD Integration
-All tests run automatically in CI pipelines. Failed tests generate screenshots and traces for debugging.
+**📖 For comprehensive testing guide, see [TESTING.md](./TESTING.md)**
 
 ### Clean builds
 - Inside the ui-library folder (recreate lockfile):
@@ -177,134 +169,70 @@ If you later move the library to React 19 for development:
 - Bump React devDependencies to 19.x, update dependent packages, then regenerate the lockfile using the “recreate lockfile” command above.
 
 ### Storybook
-- Framework: `@storybook/react-vite`
-- Run locally (http://localhost:6006):
-  - `npm run storybook`
-- Build static docs:
-  - `npm run build-storybook` (outputs `storybook-static/`)
-- Notes:
-  - The config disables React Docgen to avoid parsing `.babelrc` in Storybook context.
-  - If the preview fails to load, clear caches and reinstall:
-    - `rm -rf node_modules .storybook-cache storybook-static dist && npm install && npm run storybook`
-- Composition (consume built docs in another Storybook):
-  1) In ui-library:
+
+Explore all components visually:
+
 ```bash
-npm run build-storybook
-npx http-server storybook-static -p 6007
-```
-  2) In the consuming app’s `.storybook/main.(ts|js)`:
-```ts
-export default {
-  refs: {
-    'ui-library': { title: 'UI Library', url: 'http://localhost:6007' },
-  },
-};
+npm run storybook  # Opens http://localhost:6006
 ```
 
-### Component Composition Guidelines
+- Framework: `@storybook/react-vite`
+- All components have interactive examples
+- Build static docs: `npm run build-storybook`
 
-#### Using User component in constrained contexts
+**📖 For advanced Storybook setup, see [DEV_GUIDE.md](./DEV_GUIDE.md)**
 
-**Problem:** Some parent components (like NextUI `Navbar`, custom wrappers using `React.Children.map`) cannot accept `User` as a direct child inside `Button` due to how React element validation works.
+### Component Composition
 
-**Symptoms:**
-```
-Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store})
-```
+**Common issue:** Using `User` inside `Button` in constrained contexts (Navbar, Dropdown triggers).
 
-**Solutions:**
-
-1. **Use `UserButton` composite component** (Recommended):
+**Quick solution:** Use `UserButton` composite component:
 ```tsx
 import { UserButton } from 'ui-library';
 
-<DropdownTrigger>
-  <UserButton
-    userProps={{ name: "John Doe", description: "Admin" }}
-    buttonProps={{ variant: "light", color: "primary" }}
-    endContent={<ChevronDownIcon />}
-  />
-</DropdownTrigger>
+<UserButton
+  userProps={{ name: "John Doe", description: "Admin" }}
+  buttonProps={{ variant: "light" }}
+/>
 ```
 
-2. **Render User outside constrained components**:
-```tsx
-// Good: User is a sibling, not nested in Button
-<div className="flex items-center gap-2">
-  <User name="John Doe" />
-  <Button>Actions</Button>
-</div>
-
-// Avoid: User directly inside Button inside Navbar
-<Navbar>
-  <Button><User name="John" /></Button>  {/* ❌ May fail */}
-</Navbar>
-```
-
-3. **Use plain text when User display isn't critical**:
-```tsx
-<Button>John Doe</Button>
-```
-
-#### Component compatibility matrix
-
-| Parent Component | Direct `User` child | `UserButton` | Plain text |
-|-----------------|---------------------|--------------|------------|
-| `Button` (standalone) | ✅ Works | ✅ Works | ✅ Works |
-| `Button` in `Navbar` | ❌ Fails | ✅ Works | ✅ Works |
-| `Button` in `Dropdown` | ✅ Works | ✅ Works | ✅ Works |
-| Custom components using `React.Children.map` | ❌ May fail | ✅ Works | ✅ Works |
+**📖 For complete patterns and compatibility matrix, see [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md)**
 
 ### Troubleshooting
 
-#### Common errors
+**Common issues:**
 
-- **"Cannot use import statement outside a module"**: run under a bundler or mark your app as ESM.
-- **Tailwind error about PostCSS plugin**: install `@tailwindcss/postcss` and update `postcss.config.js`.
-- **Framer Motion/NextUI peer warnings**: align versions as noted above.
-- **Next-only modules in Storybook** (e.g., next/image): this Storybook uses a mock alias; ensure `.storybook/main.ts` includes the alias and `preview.tsx` provides any required providers.
+- **Import errors**: Ensure using a bundler (Vite/Next.js) and app is ESM
+- **NextUIProvider missing**: Wrap app with `<NextUIProvider>`
+- **Peer dependency warnings**: Align versions (see VERSION_COMPATIBILITY.md)
+- **Button ripple errors**: Import NextUI theme CSS or use `disableRipple`
 
-#### Button Ripple error: `NaN is an invalid value for the 'top' css style property`
-
-**Cause:** Button's ripple effect can't calculate click position when:
-- NextUI theme CSS isn't loaded (missing `position: relative` on button)
-- App isn't wrapped with `NextUIProvider`
-- Styles not imported in consuming app
-
-**Fix:**
-1. Import theme CSS in your app entry:
-```tsx
-import '@nextui-org/theme/dist/index.css';
-```
-
-2. Wrap your app with NextUIProvider:
-```tsx
-import { NextUIProvider } from '@nextui-org/react';
-
-export default function App() {
-  return (
-    <NextUIProvider>
-      {/* your app */}
-    </NextUIProvider>
-  );
-}
-```
-
-3. **Or** disable ripple if you don't need it:
-```tsx
-<Button disableRipple>Click me</Button>
-```
-
-#### Stale dependencies
-
-- Stale lock/ERESOLVE (clean reinstall):
+**Quick fixes:**
 ```bash
-rm -rf node_modules package-lock.json
-npm install
+# Clean reinstall
+./dev.sh → 19) Clean install
+
+# Or manually
+rm -rf node_modules package-lock.json && npm install
 ```
-- If issues persist:
+
+**📖 For detailed troubleshooting, see [DEV_GUIDE.md](./DEV_GUIDE.md#troubleshooting)**
+
+---
+
+## 🛠️ Developer Menu
+
+Interactive menu for all development tasks:
+
 ```bash
-npm dedupe
-npm cache verify
+./dev.sh
 ```
-- Avoid `--legacy-peer-deps` unless you fully understand the impact.
+
+**Features:**
+- 24+ commands in 7 categories (Build, Test, Storybook, Quality, Security, etc.)
+- Pre-commit validation (option 23: CI workflow)
+- Pre-release checklist (option 24: 5 automated checks)
+- Project status dashboard
+- Color-coded, user-friendly interface
+
+**📖 For detailed guide and workflows, see [DEV_GUIDE.md](./DEV_GUIDE.md)**

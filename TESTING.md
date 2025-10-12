@@ -1,19 +1,38 @@
 # Testing Guide for UI Library
 
+> **📖 For general development workflows, see [DEV_GUIDE.md](./DEV_GUIDE.md)**  
+> This guide focuses specifically on testing strategies and best practices.
+
 ## Overview
 
 This UI library uses **Playwright** for comprehensive testing, including component tests and end-to-end tests. We've migrated from Cypress to Playwright for better performance, debugging, and multi-browser support.
 
 ## Test Statistics
 
-- **70+ component tests** across 18 components
-- **97%+ pass rate** 
-- **~10-12 seconds** execution time
+- **70 component tests** across 18 components
+- **100% pass rate** ✅
+- **~6 seconds** execution time
 - **Multi-browser**: Chromium, Firefox, WebKit
 
 ## Quick Reference
 
-### Running Tests
+### Using the Interactive Menu (Recommended for New Developers)
+
+```bash
+./dev.sh
+```
+
+The interactive menu provides easy access to all testing commands:
+- **Option 4**: Run all tests (component + E2E)
+- **Option 5**: Run component tests only (70 tests, ~6s)
+- **Option 6**: Interactive UI mode with debugging
+- **Option 7**: Headed mode (see browser)
+- **Option 8**: Debug mode (Playwright Inspector)
+- **Option 9**: Generate coverage report
+- **Option 23**: Full CI workflow (lint + test + build)
+- **Option 24**: Pre-release checklist (all validation checks)
+
+### Running Tests Directly
 
 ```bash
 # Run all component tests (recommended)
@@ -414,11 +433,27 @@ jobs:
 - [Best Practices](https://playwright.dev/docs/best-practices)
 - [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright)
 
+## Developer Menu
+
+For a **user-friendly interface** to all testing commands, use the interactive menu:
+
+```bash
+./dev.sh
+```
+
+This provides quick access to:
+- All test commands (options 4-9)
+- CI workflow simulation (option 23)
+- Pre-release validation (option 24)
+
+Perfect for developers who prefer menus over remembering CLI commands!
+
 ## Support
 
 For questions or issues with testing:
 1. Check this guide
 2. Review existing tests in `tests/component/`
-3. Consult Playwright documentation
-4. Ask in #testing Slack channel
+3. Use `./dev.sh` for guided workflows
+4. Consult Playwright documentation
+5. Ask in #testing Slack channel
 

@@ -16,6 +16,10 @@
     "build-storybook": "storybook build",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "audit": "npm audit --production",
+    "audit:dev": "npm audit",
+    "audit:fix": "npm audit fix",
+    "outdated": "npm outdated",
     "prepublishOnly": "npm run build"
   },
   "author": "",
