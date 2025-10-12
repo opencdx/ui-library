@@ -65,6 +65,14 @@ module.exports = [
       '.eslintrc.js',
       '.storybook/**',
       'src/stories/**',
+      // Playwright artifacts
+      'playwright-report/',
+      'test-results/',
+      'playwright/.cache/',
+      '.playwright/',
+      '**/.cache/',
+      'coverage/',
+      'storybook-static/',
     ],
   },
 ];

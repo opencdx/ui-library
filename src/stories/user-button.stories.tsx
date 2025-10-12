@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from "@storybook/react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "../dropdown";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "../index";
 import UserButton from "../user/user-button";
 
 const meta: Meta<typeof UserButton> = {

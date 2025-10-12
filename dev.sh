@@ -45,7 +45,7 @@ show_menu() {
     echo "  3) Clean build (remove dist/)"
     echo ""
     echo -e "${BOLD}🧪 TESTING (Playwright)${NC}"
-    echo "  4) Run all tests (component + E2E)"
+    echo "  4) Run tests (component + E2E if present)"
     echo "  5) Run component tests only (70 tests)"
     echo "  6) Run tests in UI mode (interactive)"
     echo "  7) Run tests in headed mode (visible browser)"
@@ -223,7 +223,7 @@ while true; do
             run_command "rm -rf dist && echo 'Cleaned dist/' && npm run build" "Clean and rebuild"
             ;;
         4)
-            run_command "npm test" "Run all tests"
+            run_command "npm run test:component && if [ -d 'tests/e2e' ] && find tests/e2e -type f \( -name '*.spec.ts' -o -name '*.spec.tsx' -o -name '*.test.ts' -o -name '*.test.tsx' \) | grep -q .; then npm test; else echo 'No E2E tests found, skipping.'; fi" "Run tests (component + E2E if present)"
             ;;
         5)
             run_command "npm run test:component" "Run component tests (70 tests)"
@@ -233,11 +233,24 @@ while true; do
             npm run test:ui
             ;;
         7)
-            run_command "npm run test:headed" "Run tests in headed mode"
+            # Prefer component tests in headed mode; fallback to E2E if present
+            if find tests/component -name "*.spec.tsx" 2>/dev/null | grep -q .; then
+                run_command "npx playwright test --config=playwright-ct.config.ts --headed" "Run component tests in headed mode"
+            elif [ -d "tests/e2e" ] && find tests/e2e -type f \( -name "*.spec.ts" -o -name "*.spec.tsx" -o -name "*.test.ts" -o -name "*.test.tsx" \) 2>/dev/null | grep -q .; then
+                run_command "npx playwright test --headed" "Run E2E tests in headed mode"
+            else
+                echo -e "${YELLOW}No tests found (component or E2E).${NC}"
+            fi
             ;;
         8)
-            echo -e "${CYAN}Starting Playwright Inspector...${NC}"
-            npm run test:debug
+            # Prefer component tests in debug (Inspector) mode; fallback to E2E if present
+            if find tests/component -name "*.spec.tsx" 2>/dev/null | grep -q .; then
+                run_command "npx playwright test --config=playwright-ct.config.ts --debug" "Debug component tests (Playwright Inspector)"
+            elif [ -d "tests/e2e" ] && find tests/e2e -type f \( -name "*.spec.ts" -o -name "*.spec.tsx" -o -name "*.test.ts" -o -name "*.test.tsx" \) 2>/dev/null | grep -q .; then
+                run_command "npx playwright test --debug" "Debug E2E tests (Playwright Inspector)"
+            else
+                echo -e "${YELLOW}No tests found (component or E2E).${NC}"
+            fi
             ;;
         9)
             run_command "npm run coverage" "Generate coverage report"
@@ -259,13 +272,24 @@ while true; do
             run_command "npm run audit" "Check production dependencies"
             ;;
         15)
-            run_command "npm run audit:dev" "Check all dependencies"
+            echo -e "${CYAN}Checking all dependencies (including dev)...${NC}"
+            if npm run audit:dev; then
+                echo -e "${GREEN}✅ No blocking vulnerabilities in dev or prod dependencies${NC}"
+            else
+                echo -e "${YELLOW}⚠ Audit reported vulnerabilities (dev and/or prod). Review details above.${NC}"
+                # Do not fail the menu on non-zero exit from audit
+            fi
             ;;
         16)
             run_command "npm run audit:fix" "Fix vulnerabilities (safe)"
             ;;
         17)
-            run_command "npm run outdated" "Check outdated packages"
+            echo -e "${CYAN}Checking for outdated packages...${NC}"
+            if npm run outdated; then
+                echo -e "${GREEN}✅ All dependencies up to date${NC}"
+            else
+                echo -e "${YELLOW}⚠ Outdated packages are listed above. This is informational, not an error.${NC}"
+            fi
             ;;
         18)
             run_command "npm install" "Install dependencies"
