@@ -6,7 +6,9 @@
 - Purpose: shared UI primitives/design system for consistent UX across apps
 - Usage examples are available in Storybook
 
-**Important:** See [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md) for composition patterns and compatibility constraints.
+**Important:** 
+- See [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md) for composition patterns and compatibility constraints.
+- See [VERSION_COMPATIBILITY.md](../.github/node/VERSION_COMPATIBILITY.md) for required dependency versions across OpenCDx apps.
 
 ### Requirements
 - Node 20+ and npm 10+
