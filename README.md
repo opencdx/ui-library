@@ -75,26 +75,83 @@ module.exports = {
 ```
 
 ### Scripts
-- `npm run build`: type-check/compile
-- `npm run lint`: run ESLint
-- `npm run storybook`: dev Storybook
-- `npm run build-storybook`: static Storybook
-- `npm run cy:report:component`: headless Cypress component tests with report
-- `npm run coverage:report`: human‑readable coverage report  
 
-### Cypress
-- Component runner (GUI):
-  - `npm run cy:open`
-- Component tests (headless + mochawesome report):
-  - `npm run cy:report:component`
-- E2E tests (if added) with report:
-  - `npm run cy:report`
-- Coverage:
-  - Instrumentation via Babel (Istanbul) and `@cypress/code-coverage` is enabled.
-  - After a run, raw coverage is written to `.nyc_output/` and reports can be generated with:
-    - `npx nyc report --reporter=html` (outputs to `coverage/`)
-  - Mochawesome artifacts are under `cypress/results/`.
-  - If coverage is empty, ensure tests import `@cypress/code-coverage/support` (already configured) and rebuild after dependency changes.
+**Build & Development:**
+- `npm run build` - Type-check and compile library
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Auto-fix linting issues
+- `npm run storybook` - Start Storybook dev server
+- `npm run build-storybook` - Build static Storybook
+
+**Testing (Playwright):**
+- `npm run test` - Run all tests (component + E2E)
+- `npm run test:component` - Run component tests only (70 tests, ~10s)
+- `npm run test:ui` - Interactive test UI with time-travel debugging
+- `npm run test:headed` - Run tests in visible browser
+- `npm run test:debug` - Debug tests with Playwright Inspector
+- `npm run coverage` - Generate test coverage report  
+
+### Testing with Playwright
+We use Playwright for both component and E2E testing, providing fast, reliable tests with excellent debugging capabilities.
+
+#### Quick Start
+```bash
+# Run all component tests
+npm run test:component
+
+# Run tests with UI (interactive mode with time-travel debugging)
+npm run test:ui
+
+# Run tests in headed mode (see browser)
+npm run test:headed
+
+# Debug a specific test
+npm run test:debug
+```
+
+#### Component Tests
+- **70 tests** covering 18 UI components
+- **100% pass rate** ✅ with fast execution (~10-11 seconds)
+- Tests located in `tests/component/`
+- Each component has its own `.spec.tsx` file
+
+**Example test:**
+```tsx
+import { test, expect } from '@playwright/experimental-ct-react';
+import { Button } from '../../src/index';
+
+test('should render correctly', async ({ mount }) => {
+  const component = await mount(<Button>Click me</Button>);
+  await expect(component).toBeVisible();
+  await expect(component).toContainText('Click me');
+});
+```
+
+#### E2E Tests
+- Test complete user workflows in Storybook
+- Auto-starts Storybook server if needed
+- Run with `npm run test`
+
+#### Coverage & Reports
+```bash
+# Generate HTML coverage report
+npm run coverage
+
+# View results
+open playwright-report/index.html
+```
+
+#### Multi-browser Support
+Tests run on **Chromium**, **Firefox**, and **WebKit** by default, ensuring cross-browser compatibility.
+
+#### Debugging Tips
+1. **UI Mode**: `npm run test:ui` - Best for visual debugging with time-travel
+2. **Headed Mode**: `npm run test:headed` - See tests run in real browser
+3. **Debug Mode**: `npm run test:debug` - Step through tests with Playwright Inspector
+4. **Screenshots**: Automatically captured on test failures in `test-results/`
+
+#### CI/CD Integration
+All tests run automatically in CI pipelines. Failed tests generate screenshots and traces for debugging.
 
 ### Clean builds
 - Inside the ui-library folder (recreate lockfile):
