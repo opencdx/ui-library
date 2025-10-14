@@ -25,12 +25,6 @@ storybook-static/
 coverage/
 .nyc_output/
 
-# Cypress artifacts
-cypress/screenshots/
-cypress/videos/
-cypress/downloads/
-cypress/results/
-
 # TypeScript build info
 tsconfig.tsbuildinfo
 *.tsbuildinfo
@@ -52,3 +46,11 @@ ui-library/
 # Cursor editor workspace
 .cursor/
 
+# Playwright test artifacts
+playwright-report/
+test-results/
+playwright/.cache/
+.playwright/
+**/test-results/
+**/playwright-report/
+**/__snapshots__/

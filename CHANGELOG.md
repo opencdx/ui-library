@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2025-10-11
 
 ### Added
+- **Playwright testing**: Complete migration from Cypress to Playwright for component and E2E tests
+  - ✅ Migrated 18 component test suites (70 total tests)
+  - ✅ **100% pass rate** with fast execution (~10-11 seconds)
+  - ✅ Multi-browser support (Chromium, Firefox, WebKit)
+  - ✅ Interactive debugging with UI mode and time-travel
+  - ✅ Comprehensive test coverage for all core components
+  - Created `TESTING.md` guide with best practices and examples
+  - Enhanced README with detailed testing documentation
 - **UserButton component**: Composite component that renders User inside Button safely
   - Solves compatibility issues when using User in contexts with React.Children.map constraints
   - API: `userProps`, `buttonProps`, `className`, `endContent`
