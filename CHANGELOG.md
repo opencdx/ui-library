@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Vitest unit testing and coverage for ui-library
+  - Setup: `vitest.config.ts`, `vitest.setup.ts`
+  - Commands: `npm run test:unit`, `npm run coverage:unit`
+  - HTML coverage report at `coverage/index.html`
+- Unit tests added for multiple components (Button, Input, Select, Modal, Card, etc.)
+- Documentation updates (README, DEV_GUIDE, TESTING) to reflect unit testing flow
+
 ## [1.0.1] - 2025-10-11
 
 ### Added

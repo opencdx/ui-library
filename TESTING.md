@@ -5,7 +5,7 @@
 
 ## Overview
 
-This UI library uses **Playwright** for comprehensive testing, including component tests and end-to-end tests. We've migrated from Cypress to Playwright for better performance, debugging, and multi-browser support.
+This UI library uses **Playwright Component Testing** for browser behavior and **Vitest** for fast unit tests and coverage. Cypress is not used.
 
 ## Test Statistics
 
@@ -32,7 +32,7 @@ The interactive menu provides easy access to all testing commands:
 - **Option 23**: Full CI workflow (lint + test + build)
 - **Option 24**: Pre-release checklist (all validation checks)
 
-### Running Tests Directly
+### Running Tests Directly (Playwright CT)
 
 ```bash
 # Run all component tests (recommended)
@@ -50,11 +50,11 @@ npm run test:headed
 # Debug mode with Playwright Inspector
 npm run test:debug
 
-# Generate coverage report
+# Generate Playwright HTML report
 npm run coverage
 ```
 
-## Component Tests
+## Component Tests (Playwright CT)
 
 ### Test Structure
 
@@ -142,7 +142,7 @@ npm run test
 npx playwright test --grep @e2e
 ```
 
-## Configuration
+## Configuration (Playwright)
 
 ### Component Test Config: `playwright-ct.config.ts`
 
@@ -214,7 +214,7 @@ Install the [Playwright Test for VS Code](https://marketplace.visualstudio.com/i
 - See live results
 - Generate tests with codegen
 
-## Test Reports
+## Test Reports (Playwright)
 
 ### HTML Report
 
@@ -240,7 +240,7 @@ In CI pipelines:
 - Slack/email notifications on failures
 - Test results integrated with PR checks
 
-## Best Practices
+## Best Practices (Playwright CT)
 
 ### 1. Use Proper Selectors
 
@@ -388,11 +388,39 @@ test('modal shows content', async ({ mount, page }) => {
 
 ## Coverage Goals
 
-- **Target**: 80%+ code coverage
-- **Component coverage**: All exported components tested
-- **Interaction coverage**: Click, hover, keyboard events
-- **State coverage**: Default, active, disabled, error states
-- **Responsive coverage**: Desktop and mobile viewports
+- Unit coverage target (Vitest): 80%+ lines; improve branches where meaningful
+- Component coverage: All exported components tested in CT
+- Interaction coverage: Click, hover, keyboard events (CT)
+- State coverage: Default, active, disabled, error states (unit + CT)
+
+## Vitest Unit Tests
+
+### Overview
+- Framework: Vitest + @testing-library/react + happy-dom
+- Environment: jsdom alternative (happy-dom) for Node 21 compatibility
+- Coverage: V8 provider, HTML report to `coverage/index.html`
+
+### Commands
+```bash
+npm run test:unit
+npm run coverage:unit
+open coverage/index.html
+```
+
+### File Layout
+```
+tests/unit/
+  Button.test.tsx
+  Input.test.tsx
+  ...
+vitest.config.ts
+vitest.setup.ts
+```
+
+### Patterns
+- Prefer role-based queries and real interactions (user-event)
+- Test prop permutations and branching logic for higher branch coverage
+- Keep tests independent and deterministic
 
 ## Continuous Integration
 

@@ -117,13 +117,16 @@ Opens an interactive menu with 24+ commands organized into 7 categories:
 - `npm run storybook` - Start Storybook dev server
 - `npm run build-storybook` - Build static Storybook
 
-**Testing (Playwright):**
-- `npm run test` - Run all tests (component + E2E)
-- `npm run test:component` - Run component tests only (70 tests, ~6s)
-- `npm run test:ui` - Interactive test UI with time-travel debugging
-- `npm run test:headed` - Run tests in visible browser
-- `npm run test:debug` - Debug tests with Playwright Inspector
-- `npm run coverage` - Generate test coverage report
+**Testing:**
+- Playwright Component Testing
+  - `npm run test` - Run all tests (component + E2E)
+  - `npm run test:component` - Component tests only (~6s)
+  - `npm run test:ui` - Interactive test UI
+  - `npm run test:headed` - Visible browser
+  - `npm run test:debug` - Inspector
+- Vitest Unit Tests (library-focused)
+  - `npm run test:unit` - Run unit tests (Vitest + Testing Library)
+  - `npm run coverage:unit` - HTML coverage report (coverage/index.html)
 
 **Security & Maintenance:**
 - `npm run audit` - Check production dependencies for vulnerabilities
@@ -135,15 +138,19 @@ Opens an interactive menu with 24+ commands organized into 7 categories:
 
 **Quick start:**
 ```bash
-npm run test:component  # Run all 70 tests (~6s)
-npm run test:ui        # Interactive debugging
+# Component tests (Playwright CT)
+npm run test:component
+npm run test:ui
+
+# Unit tests + coverage (Vitest)
+npm run test:unit
+npm run coverage:unit
 ```
 
-- **70 tests** covering 18 components with **100% pass rate** ✅
-- Multi-browser support (Chromium, Firefox, WebKit)
-- Fast execution (~6 seconds)
+- Component tests cover UI behavior across browsers.
+- Unit tests provide fast, deterministic coverage of `src/**` with detailed HTML reports.
 
-**📖 For comprehensive testing guide, see [TESTING.md](./TESTING.md)**
+**📖 See [TESTING.md](./TESTING.md) for both CT and unit testing guides.**
 
 ### Clean builds
 - Inside the ui-library folder (recreate lockfile):

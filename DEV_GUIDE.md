@@ -75,7 +75,9 @@ npm run storybook
 ### Component Development Cycle
 
 1. **Create/modify component** in `src/[component-name]/`
-2. **Add/update tests** in `tests/component/[ComponentName].spec.tsx`
+2. **Add/update tests**
+   - Playwright CT in `tests/component/[ComponentName].spec.tsx` (browser behavior)
+   - Vitest unit tests in `tests/unit/[ComponentName].test.tsx` (logic/props)
 3. **Add Storybook story** in `src/stories/[ComponentName].stories.tsx`
 4. **Run tests** to verify:
    ```bash
@@ -96,7 +98,8 @@ npm run storybook
 | Task | Interactive Menu | Direct Command |
 |------|------------------|----------------|
 | **Develop components** | `./dev.sh → 10` | `npm run storybook` |
-| **Run tests** | `./dev.sh → 5` | `npm run test:component` |
+| **Run CT tests** | `./dev.sh → 5` | `npm run test:component` |
+| **Run unit tests** | `./dev.sh → 5` | `npm run test:unit` |
 | **Debug tests** | `./dev.sh → 6` | `npm run test:ui` |
 | **Lint & fix** | `./dev.sh → 13` | `npm run lint:fix` |
 | **Build library** | `./dev.sh → 1` | `npm run build` |
@@ -188,11 +191,8 @@ Automated validation with 5 checks:
 
 ### Overview
 
-- **Framework**: Playwright
-- **Tests**: 70 component tests across 18 components
-- **Pass Rate**: 100%
-- **Execution Time**: ~6 seconds
-- **Browsers**: Chromium, Firefox, WebKit
+- **Playwright Component Testing** for browser behavior
+- **Vitest** for unit tests and coverage (fast, deterministic)
 
 ### Running Tests
 
@@ -208,12 +208,21 @@ Automated validation with 5 checks:
 
 **Via npm:**
 ```bash
-npm run test:component  # Component tests only (recommended)
-npm test               # All tests (component + E2E)
-npm run test:ui        # Interactive UI mode
-npm run test:headed    # Visible browser
-npm run test:debug     # Playwright Inspector
-npm run coverage       # HTML coverage report
+## Playwright CT
+```
+npm run test:component
+npm run test:ui
+npm run test:headed
+npm run test:debug
+npm run coverage
+```
+
+## Vitest Unit
+```
+npm run test:unit
+npm run coverage:unit
+open coverage/index.html
+```
 ```
 
 ### Writing Tests
