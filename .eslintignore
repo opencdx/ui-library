@@ -1,0 +1,22 @@
+node_modules
+dist
+storybook-static
+coverage
+.next
+out
+
+# Playwright artifacts
+playwright-report
+test-results
+playwright/.cache
+playwright/**/*.js
+.playwright
+
+# Build artifacts
+*.tsbuildinfo
+.cache
+**/.cache
+
+# Storybook cache
+.storybook-cache
+
