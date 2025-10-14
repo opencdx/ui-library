@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { test, expect } from '../fixtures/coverage';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from '../../src/index';
 
 test.describe('Modal', () => {

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { test, expect } from '../fixtures/coverage';
 import { Tabs, Tab } from '../../src/index';
 
 test.describe('Tabs', () => {

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { test, expect } from '../fixtures/coverage';
 import { Autocomplete, AutocompleteItem } from '../../src/index';
 
 test.describe('Autocomplete', () => {

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { test, expect } from '../fixtures/coverage';
 import { Accordion, AccordionItem } from '../../src/index';
 
 test.describe('Accordion', () => {
