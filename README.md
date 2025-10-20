@@ -6,6 +6,25 @@
 - Purpose: shared UI primitives/design system for consistent UX across apps
 - Usage examples are available in Storybook
 
+---
+
+## 📚 Documentation Map
+
+**Start here based on what you need:**
+
+| What You Need | Read This |
+|---------------|-----------|
+| 🚀 **First time here?** | This README (installation & quick start) |
+| 💻 **Developing components?** | [DEV_GUIDE.md](./DEV_GUIDE.md) - Complete workflows |
+| 🧪 **Writing tests?** | [TESTING.md](./TESTING.md) - Testing guide & best practices |
+| 🏗️ **Component architecture?** | [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md) - Patterns & constraints |
+| 🔄 **Version compatibility?** | [VERSION_COMPATIBILITY.md](../.github/node/VERSION_COMPATIBILITY.md) - Dependency matrix |
+| 📝 **Release history?** | [CHANGELOG.md](./CHANGELOG.md) - Version history |
+
+---
+
+## 🚀 Quick Start
+
 ### Requirements
 - Node 20+ and npm 10+
 - Peer deps provided by consumer:
@@ -71,26 +90,67 @@ module.exports = {
 ```
 
 ### Scripts
-- `npm run build`: type-check/compile
-- `npm run lint`: run ESLint
-- `npm run storybook`: dev Storybook
-- `npm run build-storybook`: static Storybook
-- `npm run cy:report:component`: headless Cypress component tests with report
-- `npm run coverage:report`: human‑readable coverage report  
 
-### Cypress
-- Component runner (GUI):
-  - `npm run cy:open`
-- Component tests (headless + mochawesome report):
-  - `npm run cy:report:component`
-- E2E tests (if added) with report:
-  - `npm run cy:report`
-- Coverage:
-  - Instrumentation via Babel (Istanbul) and `@cypress/code-coverage` is enabled.
-  - After a run, raw coverage is written to `.nyc_output/` and reports can be generated with:
-    - `npx nyc report --reporter=html` (outputs to `coverage/`)
-  - Mochawesome artifacts are under `cypress/results/`.
-  - If coverage is empty, ensure tests import `@cypress/code-coverage/support` (already configured) and rebuild after dependency changes.
+**🎯 Quick Start - Interactive Development Menu:**
+```bash
+./dev.sh
+```
+Opens an interactive menu with 24+ commands organized into 7 categories:
+- 📦 Build & Development (build, clean, types)
+- 🧪 Testing (Playwright tests, UI mode, coverage)
+- 🎨 Storybook (dev server, build)
+- 🔍 Code Quality (lint, auto-fix)
+- 🔒 Security & Maintenance (audit, outdated)
+- 📦 Package Management (install, clean, tarball)
+- 🚀 Quick Actions (CI workflow, pre-release checklist)
+
+**Perfect for:**
+- New developers discovering available commands
+- Running pre-commit checks (`option 23: CI workflow`)
+- Pre-release validation (`option 24: Pre-release checklist`)
+- Quick access to common tasks without memorizing commands
+
+**Build & Development:**
+- `npm run build` - Type-check and compile library
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Auto-fix linting issues
+- `npm run storybook` - Start Storybook dev server
+- `npm run build-storybook` - Build static Storybook
+
+**Testing:**
+- Playwright Component Testing
+  - `npm run test` - Run all tests (component + E2E)
+  - `npm run test:component` - Component tests only (~6s)
+  - `npm run test:ui` - Interactive test UI
+  - `npm run test:headed` - Visible browser
+  - `npm run test:debug` - Inspector
+- Vitest Unit Tests (library-focused)
+  - `npm run test:unit` - Run unit tests (Vitest + Testing Library)
+  - `npm run coverage:unit` - HTML coverage report (coverage/index.html)
+
+**Security & Maintenance:**
+- `npm run audit` - Check production dependencies for vulnerabilities
+- `npm run audit:dev` - Check all dependencies (including dev)
+- `npm run audit:fix` - Auto-fix vulnerabilities (safe updates)
+- `npm run outdated` - List packages with available updates  
+
+### Testing
+
+**Quick start:**
+```bash
+# Component tests (Playwright CT)
+npm run test:component
+npm run test:ui
+
+# Unit tests + coverage (Vitest)
+npm run test:unit
+npm run coverage:unit
+```
+
+- Component tests cover UI behavior across browsers.
+- Unit tests provide fast, deterministic coverage of `src/**` with detailed HTML reports.
+
+**📖 See [TESTING.md](./TESTING.md) for both CT and unit testing guides.**
 
 ### Clean builds
 - Inside the ui-library folder (recreate lockfile):
@@ -116,43 +176,70 @@ If you later move the library to React 19 for development:
 - Bump React devDependencies to 19.x, update dependent packages, then regenerate the lockfile using the “recreate lockfile” command above.
 
 ### Storybook
-- Framework: `@storybook/react-vite`
-- Run locally (http://localhost:6006):
-  - `npm run storybook`
-- Build static docs:
-  - `npm run build-storybook` (outputs `storybook-static/`)
-- Notes:
-  - The config disables React Docgen to avoid parsing `.babelrc` in Storybook context.
-  - If the preview fails to load, clear caches and reinstall:
-    - `rm -rf node_modules .storybook-cache storybook-static dist && npm install && npm run storybook`
-- Composition (consume built docs in another Storybook):
-  1) In ui-library:
+
+Explore all components visually:
+
 ```bash
-npm run build-storybook
-npx http-server storybook-static -p 6007
-```
-  2) In the consuming app’s `.storybook/main.(ts|js)`:
-```ts
-export default {
-  refs: {
-    'ui-library': { title: 'UI Library', url: 'http://localhost:6007' },
-  },
-};
+npm run storybook  # Opens http://localhost:6006
 ```
 
+- Framework: `@storybook/react-vite`
+- All components have interactive examples
+- Build static docs: `npm run build-storybook`
+
+**📖 For advanced Storybook setup, see [DEV_GUIDE.md](./DEV_GUIDE.md)**
+
+### Component Composition
+
+**Common issue:** Using `User` inside `Button` in constrained contexts (Navbar, Dropdown triggers).
+
+**Quick solution:** Use `UserButton` composite component:
+```tsx
+import { UserButton } from 'ui-library';
+
+<UserButton
+  userProps={{ name: "John Doe", description: "Admin" }}
+  buttonProps={{ variant: "light" }}
+/>
+```
+
+**📖 For complete patterns and compatibility matrix, see [COMPONENT_GUIDELINES.md](./COMPONENT_GUIDELINES.md)**
+
 ### Troubleshooting
-- “Cannot use import statement outside a module”: run under a bundler or mark your app as ESM.
-- Tailwind error about PostCSS plugin: install `@tailwindcss/postcss` and update `postcss.config.js`.
-- Framer Motion/NextUI peer warnings: align versions as noted above.
-- Next-only modules in Storybook (e.g., next/image): this Storybook uses a mock alias; ensure `.storybook/main.ts` includes the alias and `preview.tsx` provides any required providers.
- - Stale lock/ERESOLVE (clean reinstall):
+
+**Common issues:**
+
+- **Import errors**: Ensure using a bundler (Vite/Next.js) and app is ESM
+- **NextUIProvider missing**: Wrap app with `<NextUIProvider>`
+- **Peer dependency warnings**: Align versions (see VERSION_COMPATIBILITY.md)
+- **Button ripple errors**: Import NextUI theme CSS or use `disableRipple`
+
+**Quick fixes:**
 ```bash
-rm -rf node_modules package-lock.json
-npm install
+# Clean reinstall
+./dev.sh → 19) Clean install
+
+# Or manually
+rm -rf node_modules package-lock.json && npm install
 ```
- - If issues persist:
+
+**📖 For detailed troubleshooting, see [DEV_GUIDE.md](./DEV_GUIDE.md#troubleshooting)**
+
+---
+
+## 🛠️ Developer Menu
+
+Interactive menu for all development tasks:
+
 ```bash
-npm dedupe
-npm cache verify
+./dev.sh
 ```
- - Avoid `--legacy-peer-deps` unless you fully understand the impact.
+
+**Features:**
+- 24+ commands in 7 categories (Build, Test, Storybook, Quality, Security, etc.)
+- Pre-commit validation (option 23: CI workflow)
+- Pre-release checklist (option 24: 5 automated checks)
+- Project status dashboard
+- Color-coded, user-friendly interface
+
+**📖 For detailed guide and workflows, see [DEV_GUIDE.md](./DEV_GUIDE.md)**
